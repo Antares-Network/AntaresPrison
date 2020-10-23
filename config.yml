@@ -10,7 +10,7 @@ world: 'WORLD_NOT_SET'
 basic_ticket: 'tier_1'
 
 # Plugin message prefix
-prefix: '&6&lPrison &8» '
+prefix: '&6&lPrison &8{>>} '
 
 # Messages
 messages:
@@ -29,4 +29,4 @@ messages:
   can_not_do_that_here: '&7You can not do that here!'
   can_not_enter_room: '&7You can not enter this room yet.'
   already_has_ticket: '&7You already own this ticket.'
-  not_enough_money: '&7You don not have enough money.'
+  not_enough_money: '&7You do not have enough money.'
