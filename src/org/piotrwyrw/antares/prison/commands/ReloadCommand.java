@@ -16,7 +16,7 @@ public class ReloadCommand implements CommandExecutor {
             return true;
         }
         AntaresPrison.getInstance().onDisable();
-        AntaresPrison.getInstance().onEnable();
+        AntaresPrison.getInstance().loadPlugin();
         MessageSender.toAllAdmins(MessageConstants.RELOAD_COMPLETE, true);
         return false;
     }

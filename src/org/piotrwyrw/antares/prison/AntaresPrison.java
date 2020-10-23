@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.piotrwyrw.antares.prison.commands.PrisonCommand;
 import org.piotrwyrw.antares.prison.constants.MessageConstants;
 import org.piotrwyrw.antares.prison.events.*;
@@ -27,11 +28,29 @@ public class AntaresPrison extends JavaPlugin {
         getServer().getPluginManager().disablePlugin(this);
     }
 
+    private void noMultiverse() {
+        System.out.println("!!!!! No Multiverse-Core found. !!!!!");
+        getServer().getPluginManager().disablePlugin(this);
+    }
+
     @Override
     public void onEnable() {
         MessageSender.toAllAdmins(MessageConstants.PLUGIN_ENABLE, true);
         antaresPrison = this;
 
+        System.out.println("Enabling plugin in 10 seconds ...");
+
+        new BukkitRunnable() {
+
+            @Override
+            public void run() {
+                loadPlugin();
+                cancel();
+            }
+        }.runTaskLater(this, 10 * 20);
+    }
+
+    public void loadPlugin() {
         if (getServer().getPluginManager().getPlugin("PlaceholderAPI") == null) {
             noPlaceholderAPI();
             return;
@@ -39,6 +58,16 @@ public class AntaresPrison extends JavaPlugin {
 
         if (!getServer().getPluginManager().getPlugin("PlaceholderAPI").isEnabled()) {
             noPlaceholderAPI();
+            return;
+        }
+
+        if (getServer().getPluginManager().getPlugin("Multiverse-Core") == null) {
+            noMultiverse();
+            return;
+        }
+
+        if (!getServer().getPluginManager().getPlugin("Multiverse-Core").isEnabled()) {
+            noMultiverse();
             return;
         }
 
@@ -64,9 +93,7 @@ public class AntaresPrison extends JavaPlugin {
 
         mines.regenAllMines();
 
-        World w = Bukkit.getWorld(config.world);
-        if (w != null)
-            this.world = w;
+        this.world = config.world;
 
         autoRegen.startInteligent(3);
 
@@ -75,7 +102,6 @@ public class AntaresPrison extends JavaPlugin {
 
         registerCommands();
         registerEvents();
-
     }
 
     private void registerEvents() {

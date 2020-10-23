@@ -1,6 +1,8 @@
 package org.piotrwyrw.antares.prison;
 
 import org.bukkit.Bukkit;
+import org.bukkit.World;
+import org.bukkit.WorldCreator;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.piotrwyrw.antares.prison.constants.MessageConstants;
@@ -12,7 +14,7 @@ public class Configuration {
     public File file;
     public FileConfiguration configuration;
     public String basic_ticket;
-    public String world;
+    public World world;
 
     public Configuration(String filename) {
         File f = new File(AntaresPrison.getInstance().getDataFolder(), filename);
@@ -30,22 +32,33 @@ public class Configuration {
                 .replaceAll("\\{\\->\\}", "\u2911");
     }
 
-    private String safeLoad(String adress, String fallback) {
+    private String safeLoad(String adress, String fallback, boolean placeholders) {
         if (configuration.get(adress) == null)
             return fallback;
         else
             return withUnicodePlaceholders(configuration.getString(adress));
     }
 
-    public boolean loadFromFile() {
-        this.basic_ticket = safeLoad("basic_ticket", "tier_1");
-        this.world = safeLoad("world", "WORLD_NOT_SET");
+    private String safeLoad(String adress, String fallback) {
+        return safeLoad(adress, fallback, false);
+    }
 
-        if (world == "WORLD_NOT_SET" || Bukkit.getWorld(world) == null) {
-            System.out.println("!!!!! AntaresPrison Plugin was disabled. Please put a proper world in config.yml !!!!!");
-            AntaresPrison.getInstance().getServer().getPluginManager().disablePlugin(AntaresPrison.getInstance());
-            return false;
+    private boolean unknownWorld() {
+        System.out.println("!!!!! AntaresPrison Plugin was disabled. Please put a proper world in config.yml !!!!!");
+        System.out.println("!!!!! Unknown world: " + world + " !!!!!");
+        AntaresPrison.getInstance().getServer().getPluginManager().disablePlugin(AntaresPrison.getInstance());
+        return false;
+    }
+
+    public boolean loadFromFile() {
+        this.basic_ticket = safeLoad("basic_ticket", "tier_1", false);
+        String wname = safeLoad("world", "WORLD_NOT_SET", false);
+
+        if (wname.equals("WORLD_NOT_SET") || Bukkit.getWorld(wname) == null) {
+            return unknownWorld();
         }
+
+        this.world = Bukkit.getWorld(wname);
 
         MessageConstants.PREFIX = safeLoad("prefix", MessageConstants.PREFIX);
         MessageConstants.PLUGIN_ENABLE = safeLoad("messages.plugin_enable", MessageConstants.PLUGIN_ENABLE);

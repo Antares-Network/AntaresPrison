@@ -15,7 +15,7 @@ public class MessageConstants {
 
     public static String[] PLUGIN_SUMMARY = {
             "&6              AntaresPrison",
-            "&7  You are Running AntaresPrison &6" + AntaresPrison.getInstance().getDescription().getVersion(),
+            "&7  You are Running AntaresPrison &6v1.2",
             "&7        For help use &c/prison help"
     };
 
