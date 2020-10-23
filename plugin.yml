@@ -1,6 +1,8 @@
 name: AntaresPrison
 version: 1.0
 api-version: 1.15
+authors: [piotrwyrw, nathen418]
 main: org.piotrwyrw.antares.prison.AntaresPrison
 commands:
   prison:
+    description: Plugin main command
