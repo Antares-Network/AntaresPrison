@@ -1,4 +1,4 @@
-# AntaresPrison
+# AntaresPrison :jack_o_lantern:
 [![Discord](https://discordapp.com/api/guilds/649703068799336454/widget.png)](https://discordapp.com/invite/KKYw763)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/piotrwyrw/AntaresPrison?style=social)
 
