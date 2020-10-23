@@ -23,14 +23,22 @@ public class AntaresPrison extends JavaPlugin {
     public Tickets tickets;
     public Configuration config;
 
-    private void noPlaceholderAPI() {
-        System.out.println("!!!!! No PlaceholderAPI found. !!!!!");
-        getServer().getPluginManager().disablePlugin(this);
+    private boolean checkPlaceholderAPI() {
+        if (!getServer().getPluginManager().getPlugin("PlaceholderAPI").isEnabled()) {
+            System.out.println("!!!!! No PlaceholderAPI found. !!!!!");
+            getServer().getPluginManager().disablePlugin(this);
+            return false;
+        }
+        return true;
     }
 
-    private void noMultiverse() {
-        System.out.println("!!!!! No Multiverse-Core found. !!!!!");
-        getServer().getPluginManager().disablePlugin(this);
+    private boolean checkMultiverseCore() {
+        if (!getServer().getPluginManager().getPlugin("Multiverse-Core").isEnabled()) {
+            System.out.println("!!!!! No Multiverse-Core found. !!!!!");
+            getServer().getPluginManager().disablePlugin(this);
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -51,25 +59,11 @@ public class AntaresPrison extends JavaPlugin {
     }
 
     public void loadPlugin() {
-        if (getServer().getPluginManager().getPlugin("PlaceholderAPI") == null) {
-            noPlaceholderAPI();
+        if (!checkPlaceholderAPI())
             return;
-        }
 
-        if (!getServer().getPluginManager().getPlugin("PlaceholderAPI").isEnabled()) {
-            noPlaceholderAPI();
+        if (!checkMultiverseCore())
             return;
-        }
-
-        if (getServer().getPluginManager().getPlugin("Multiverse-Core") == null) {
-            noMultiverse();
-            return;
-        }
-
-        if (!getServer().getPluginManager().getPlugin("Multiverse-Core").isEnabled()) {
-            noMultiverse();
-            return;
-        }
 
         if (!getDataFolder().exists()) {
             getDataFolder().mkdir();
