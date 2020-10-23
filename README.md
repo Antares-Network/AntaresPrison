@@ -2,10 +2,11 @@
 [![Discord](https://discordapp.com/api/guilds/649703068799336454/widget.png)](https://discordapp.com/invite/KKYw763)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/piotrwyrw/AntaresPrison?style=social)
 
-A Spigot Prisons plugin created for the [Antares Network](https://playantares.com/) Minecraft server.
+A Prisons plugin for any Spigot or Spigot fork, created for the [Antares Network](https://playantares.com/) Minecraft server.
 
 Join the Antares Network Discord server at https://discord.gg/KKYw763
-Our server with the Plugin installed: **mc.playantares.com**
+- Our Minecraft server with the plugin installed: **mc.playantares.com**
+- It has 4 gamemodes: Factions, Skyblock, Creative Plots, and Prisons
 
 # List of commands
 * **/prison help** -- Displays a list of the Plugin's commands
