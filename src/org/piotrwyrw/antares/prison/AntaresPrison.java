@@ -89,7 +89,7 @@ public class AntaresPrison extends JavaPlugin {
 
         this.world = config.world;
 
-        autoRegen.startInteligent(3);
+        autoRegen.startBoth(3, 20);
 
         PrisonPlaceHolders ph = new PrisonPlaceHolders();
         ph.register();
