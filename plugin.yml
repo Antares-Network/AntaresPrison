@@ -1,0 +1,6 @@
+name: AntaresPrison
+version: 1.0
+api-version: 1.15
+main: org.piotrwyrw.antares.prison.AntaresPrison
+commands:
+  prison:

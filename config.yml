@@ -1,0 +1,32 @@
+#
+#              AntaresPrison
+#            ~~~~~~~~~~~~~~~~
+#
+
+# The world, the plugin should work in
+world: 'WORLD_NOT_SET'
+
+# Basic ticket all players get
+basic_ticket: 'tier_1'
+
+# Plugin message prefix
+prefix: '&6&lPrison &8{>>} '
+
+# Messages
+messages:
+  plugin_enable: '&7Enabling plugin ..'
+  plugin_disable: '&7Disabling plugin ..'
+  mine_regen_tp: '&7You have been teleported, because you were in a mine that was regenerating.'
+  mine_regen_all: '&7All mines have been regenerated.'
+  permission_denied: '&cPermission denied.'
+  must_be_player: '&cYou must be a player to excecute this command.'
+  could_not_save_economy: '&cCould not save economy.'
+  could_not_save_tickets: '&cCould not save tickets.'
+  economy_saved: '&7Economy was saved to a file.'
+  tickets_saved: '&7Tickets were saved to a file'
+  reload_complete: '&7Reload complete.'
+  seller_received: '&7You received a seller chest.'
+  can_not_do_that_here: '&7You can not do that here!'
+  can_not_enter_room: '&7You can not enter this room yet.'
+  already_has_ticket: '&7You already own this ticket.'
+  not_enough_money: '&7You do not have enough money.'
