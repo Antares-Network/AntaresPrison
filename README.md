@@ -24,7 +24,7 @@ Our server with the Plugin installed: **mc.playantares.com**
 * **prisons.list_mines** -- allows the player to list the mines and their X,Y,Z coordinates
 * **prisons.autosell** -- allows the player to autosell 
 * **prisons.reload** -- allows the player to reload the plugin
-* **prisons.get_seller** -- allows the player to recieve a Seller Chest with **/prison getseller*
+* **prisons.get_seller** -- allows the player to recieve a Seller Chest with **/prison getseller**
 * **prisons.place_seller** -- allows the player to place the seller chest down
 * **prisons.destroy_seller** -- allows the player to destroy the seller chest
 * **prisons.modify_world** -- allows the player to break blocks that arent in the mine
