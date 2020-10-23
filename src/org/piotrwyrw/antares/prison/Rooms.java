@@ -2,19 +2,17 @@ package org.piotrwyrw.antares.prison;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Player;
 import org.piotrwyrw.antares.prison.constants.MessageConstants;
 import org.piotrwyrw.antares.prison.objects.Area;
-import org.piotrwyrw.antares.prison.objects.Mine;
 import org.piotrwyrw.antares.prison.objects.Room;
 import org.piotrwyrw.antares.prison.utils.MessageSender;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Set;
 
 public class Rooms {
     public ArrayList<Room> rooms = new ArrayList<Room>();

@@ -1,9 +1,9 @@
 package org.piotrwyrw.antares.prison.utils;
 
-import com.sun.istack.internal.NotNull;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.piotrwyrw.antares.prison.AntaresPrison;
 import org.piotrwyrw.antares.prison.constants.MessageConstants;
 import org.piotrwyrw.antares.prison.constants.PermissionConstants;
 
@@ -45,6 +45,8 @@ public class MessageSender {
      */
     public static void toEveryone(String message, String permission, boolean withPrefix) {
         for (Player p : Bukkit.getOnlinePlayers()) {
+            if (p.getWorld() != AntaresPrison.getInstance().world)
+                continue;
             if (p.hasPermission(permission)) {
                 p.sendMessage(MessageConstants.construct(message, withPrefix));
             }
@@ -70,6 +72,8 @@ public class MessageSender {
      */
     public static void toEveryone(String message, boolean withPrefix) {
         for (Player p : Bukkit.getOnlinePlayers()) {
+            if (p.getWorld() != AntaresPrison.getInstance().world)
+                continue;
             p.sendMessage(MessageConstants.construct(message, withPrefix));
         }
     }

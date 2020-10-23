@@ -36,11 +36,8 @@ public class Area {
     }
 
     public boolean hasLocation(Location loc) {
-        if ((loc.getX() <= getMaximum().getX() && loc.getX() >= getMinimum().getX()) &&
+        return (loc.getX() <= getMaximum().getX() && loc.getX() >= getMinimum().getX()) &&
                 (loc.getY() <= getMaximum().getY() && loc.getY() >= getMinimum().getY()) &&
-                (loc.getZ() <= getMaximum().getZ() && loc.getZ() >= getMinimum().getZ())) {
-            return true;
-        }
-        return false;
+                (loc.getZ() <= getMaximum().getZ() && loc.getZ() >= getMinimum().getZ());
     }
 }

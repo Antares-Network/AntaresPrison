@@ -1,6 +1,5 @@
 package org.piotrwyrw.antares.prison;
 
-import oracle.jrockit.jfr.StringConstantPool;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;

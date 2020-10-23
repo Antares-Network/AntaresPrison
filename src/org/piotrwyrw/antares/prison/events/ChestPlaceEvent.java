@@ -1,6 +1,5 @@
 package org.piotrwyrw.antares.prison.events;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Chest;

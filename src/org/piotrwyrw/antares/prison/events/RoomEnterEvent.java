@@ -1,7 +1,5 @@
 package org.piotrwyrw.antares.prison.events;
 
-import com.sun.imageio.spi.InputStreamImageInputStreamSpi;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -11,11 +9,7 @@ import org.piotrwyrw.antares.prison.AntaresPrison;
 import org.piotrwyrw.antares.prison.constants.MessageConstants;
 import org.piotrwyrw.antares.prison.constants.PermissionConstants;
 import org.piotrwyrw.antares.prison.objects.Room;
-import org.piotrwyrw.antares.prison.utils.ListUtil;
 import org.piotrwyrw.antares.prison.utils.MessageSender;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class RoomEnterEvent implements Listener {
 

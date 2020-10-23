@@ -1,6 +1,5 @@
 package org.piotrwyrw.antares.prison.objects;
 
-import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.piotrwyrw.antares.prison.AntaresPrison;
 

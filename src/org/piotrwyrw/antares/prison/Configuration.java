@@ -1,15 +1,11 @@
 package org.piotrwyrw.antares.prison;
 
-import com.mojang.brigadier.Message;
 import org.bukkit.Bukkit;
-import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.piotrwyrw.antares.prison.constants.MessageConstants;
-import org.piotrwyrw.antares.prison.utils.MessageSender;
 
 import java.io.File;
-import java.io.IOException;
 
 public class Configuration {
 
@@ -27,11 +23,18 @@ public class Configuration {
         this.configuration = YamlConfiguration.loadConfiguration(f);
     }
 
+    private String withUnicodePlaceholders(String str) {
+        return str
+                .replaceAll("\\{\\>\\>\\}", "\u00BB")
+                .replaceAll("\\{\\>\\}", "\u27A4")
+                .replaceAll("\\{\\->\\}", "\u2911");
+    }
+
     private String safeLoad(String adress, String fallback) {
         if (configuration.get(adress) == null)
             return fallback;
         else
-            return configuration.getString(adress);
+            return withUnicodePlaceholders(configuration.getString(adress));
     }
 
     public boolean loadFromFile() {

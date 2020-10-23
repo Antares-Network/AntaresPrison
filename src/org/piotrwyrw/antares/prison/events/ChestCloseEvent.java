@@ -1,15 +1,14 @@
 package org.piotrwyrw.antares.prison.events;
 
-import net.minecraft.server.v1_16_R2.PacketPlayOutWorldParticles;
-import org.bukkit.*;
-import org.bukkit.craftbukkit.v1_16_R2.entity.CraftPlayer;
+import org.bukkit.Material;
+import org.bukkit.Particle;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.scheduler.BukkitRunnable;
 import org.piotrwyrw.antares.prison.AntaresPrison;
 import org.piotrwyrw.antares.prison.Economy;
 import org.piotrwyrw.antares.prison.WorthManager;

@@ -45,7 +45,7 @@ public class WorthManager {
     }
 
     public boolean hasWorth(Material material) {
-        return worths.keySet().contains(material);
+        return worths.containsKey(material);
     }
 
     public double worthOf(Material material) {

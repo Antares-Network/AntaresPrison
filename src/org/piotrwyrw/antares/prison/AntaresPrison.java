@@ -2,9 +2,6 @@ package org.piotrwyrw.antares.prison;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.piotrwyrw.antares.prison.commands.PrisonCommand;
@@ -12,8 +9,6 @@ import org.piotrwyrw.antares.prison.constants.MessageConstants;
 import org.piotrwyrw.antares.prison.events.*;
 import org.piotrwyrw.antares.prison.objects.MineAutoRegen;
 import org.piotrwyrw.antares.prison.utils.MessageSender;
-
-import java.io.File;
 
 public class AntaresPrison extends JavaPlugin {
 
@@ -27,10 +22,25 @@ public class AntaresPrison extends JavaPlugin {
     public Tickets tickets;
     public Configuration config;
 
+    private void noPlaceholderAPI() {
+        System.out.println("!!!!! No PlaceholderAPI found. !!!!!");
+        getServer().getPluginManager().disablePlugin(this);
+    }
+
     @Override
     public void onEnable() {
         MessageSender.toAllAdmins(MessageConstants.PLUGIN_ENABLE, true);
         antaresPrison = this;
+
+        if (getServer().getPluginManager().getPlugin("PlaceholderAPI") == null) {
+            noPlaceholderAPI();
+            return;
+        }
+
+        if (!getServer().getPluginManager().getPlugin("PlaceholderAPI").isEnabled()) {
+            noPlaceholderAPI();
+            return;
+        }
 
         if (!getDataFolder().exists()) {
             getDataFolder().mkdir();
@@ -59,6 +69,9 @@ public class AntaresPrison extends JavaPlugin {
             this.world = w;
 
         autoRegen.startInteligent(3);
+
+        PrisonPlaceHolders ph = new PrisonPlaceHolders();
+        ph.register();
 
         registerCommands();
         registerEvents();

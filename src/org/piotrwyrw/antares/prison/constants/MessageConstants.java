@@ -1,6 +1,9 @@
 package org.piotrwyrw.antares.prison.constants;
 
 import org.bukkit.ChatColor;
+import org.piotrwyrw.antares.prison.AntaresPrison;
+
+import java.lang.reflect.AnnotatedType;
 
 public class MessageConstants {
 
@@ -12,7 +15,7 @@ public class MessageConstants {
 
     public static String[] PLUGIN_SUMMARY = {
             "&6              AntaresPrison",
-            "&7  You are Running AntaresPrison v1.0",
+            "&7  You are Running AntaresPrison &6" + AntaresPrison.getInstance().getDescription().getVersion(),
             "&7        For help use &c/prison help"
     };
 
