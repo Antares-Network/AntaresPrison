@@ -8,14 +8,14 @@ Join the Antares Network Discord server at https://discord.gg/KKYw763
 Our server with the Plugin installed: **mc.playantares.com**
 
 # List of commands
-* **/prison help** - Displays a list of the Plugin's commands
-* **/prison regen** - Regen all mines
-* **/prison regen {mine}** - Regen a particular mine
-* **/prison balance** - Your prison balance
-* **/prison balance {player}** - Prison balance of a player
-* **/prison minelist** - List all mines
-* **/prison reload** - Reload the plugin
-* **/prison getseller** - Get a seller chest
+* **/prison help** -- Displays a list of the Plugin's commands
+* **/prison regen** -- Regen all mines
+* **/prison regen {mine}** -- Regen a particular mine
+* **/prison balance** -- Your prison balance
+* **/prison balance {player}** -- Prison balance of a player
+* **/prison minelist** -- List all mines
+* **/prison reload** -- Reload the plugin
+* **/prison getseller** -- Get a seller chest
 
 # List of Permissions
 * **prisons.receive_admin_messages** --  allows the player to see .. well, the admin messages, about errors, infos, etc.
