@@ -4,9 +4,9 @@
 
 A Prisons plugin for any Spigot or Spigot fork, created for the [Antares Network](https://playantares.com/) Minecraft server.
 
-Join the Antares Network Discord server at https://discord.gg/KKYw763
-- Our Minecraft server with the plugin installed: **mc.playantares.com**
-- It has 4 gamemodes: Factions, Skyblock, Creative Plots, and Prisons
+Join the Antares Network Discord server at https://discord.gg/KKYw763  
+Our Minecraft server with the plugin installed: **mc.playantares.com**  
+It has 4 gamemodes: Factions, Skyblock, Creative Plots, and Prisons
 
 # List of commands
 * **/prison help** -- Displays a list of the Plugin's commands
@@ -33,3 +33,10 @@ Join the Antares Network Discord server at https://discord.gg/KKYw763
 * **prisons.damage_entities** -- allows the player to damage entities in the mining world, like players and mobs 
 * **prisons.place_sign** -- allows the player to place the rankup signs
 * **prisons.skip_room** -- allows the player to enter a room they have not bought the tier for yet
+
+
+# Helpful Tips 
+### To create a "rankup" sign, type it like this:  
+[prison:ticket]  
+tier_#  
+{value}  
