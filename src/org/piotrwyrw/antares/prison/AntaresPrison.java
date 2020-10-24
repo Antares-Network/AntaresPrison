@@ -45,22 +45,11 @@ public class AntaresPrison extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        msd.toAllAdmins(MessageConstants.PLUGIN_ENABLE, true);
+        msd = new MessageSender();
         antaresPrison = this;
 
-        System.out.println("Enabling plugin in 10 seconds ...");
+        msd.toAllAdmins(MessageConstants.PLUGIN_ENABLE, true);
 
-        new BukkitRunnable() {
-
-            @Override
-            public void run() {
-                loadPlugin();
-                cancel();
-            }
-        }.runTaskLater(this, 10 * 20);
-    }
-
-    public void loadPlugin() {
         if (!checkPlaceholderAPI())
             return;
 
@@ -82,6 +71,18 @@ public class AntaresPrison extends JavaPlugin {
         config = new Configuration("config.yml");
         temporary = new Temporary();
 
+        System.out.println("Enabling plugin in 10 seconds ...");
+
+        new BukkitRunnable() {
+
+            @Override
+            public void run() {
+                loadPlugin();
+            }
+        }.runTaskLater(this, 10 * 20);
+    }
+
+    public void loadPlugin() {
         if (!config.loadFromFile())
             return;
 

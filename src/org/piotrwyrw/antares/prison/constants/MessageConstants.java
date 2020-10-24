@@ -16,7 +16,7 @@ public class MessageConstants {
     public static String[] PLUGIN_SUMMARY = {
             "&6              AntaresPrison",
             "&7  You are Running AntaresPrison &6{VERSION}",
-            "&7        For help use &c/prison help"
+            "&7       For help use &c/prisons help"
     };
 
     private static String secretPlaceholders(String sph) {
@@ -32,14 +32,14 @@ public class MessageConstants {
 
     public static String[] HELP = {
             "&n&8o-------------------------------------------o",
-            "&b/prison help &8-&e Show this help page",
-            "&b/prison regen &8-&e Regen all mines",
-            "&b/prison regen <m> &8-&e Regen a particular mine",
-            "&b/prison balance &8-&e Your prison balance ",
-            "&b/prison balance <p> &8-&e Prison balance of a player",
-            "&b/prison minelist &8-&e List all mines",
-            "&b/prison reload &8-&e Reload the plugin",
-            "&b/prison getseller &8-&e Get a seller chest",
+            "&b/prisons help &8-&e Show this help page",
+            "&b/prisons regen &8-&e Regen all mines",
+            "&b/prisons regen <m> &8-&e Regen a particular mine",
+            "&b/prisons balance &8-&e Your prison balance ",
+            "&b/prisons balance <p> &8-&e Prison balance of a player",
+            "&b/prisons minelist &8-&e List all mines",
+            "&b/prisons reload &8-&e Reload the plugin",
+            "&b/prisons getseller &8-&e Get a seller chest",
             "&n&8o-------------------------------------------o"
     };
 
