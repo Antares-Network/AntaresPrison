@@ -45,8 +45,9 @@ public class AntaresPrison extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        msd = new MessageSender();
         antaresPrison = this;
+
+        this.msd = new MessageSender();
 
         msd.toAllAdmins(MessageConstants.PLUGIN_ENABLE, true);
 
@@ -56,11 +57,11 @@ public class AntaresPrison extends JavaPlugin {
         if (!checkMultiverseCore())
             return;
 
-        MessageConstants.updatePluginSummary();
-
         if (!getDataFolder().exists()) {
             getDataFolder().mkdir();
         }
+
+        MessageConstants.updatePluginSummary();
 
         mines = new Mines("mines.yml");
         economy = new Economy("economy.yml");
@@ -71,18 +72,6 @@ public class AntaresPrison extends JavaPlugin {
         config = new Configuration("config.yml");
         temporary = new Temporary();
 
-        System.out.println("Enabling plugin in 10 seconds ...");
-
-        new BukkitRunnable() {
-
-            @Override
-            public void run() {
-                loadPlugin();
-            }
-        }.runTaskLater(this, 10 * 20);
-    }
-
-    public void loadPlugin() {
         if (!config.loadFromFile())
             return;
 
@@ -103,6 +92,7 @@ public class AntaresPrison extends JavaPlugin {
 
         registerCommands();
         registerEvents();
+
     }
 
     private void registerEvents() {
@@ -142,6 +132,9 @@ public class AntaresPrison extends JavaPlugin {
         autoRegen = null;
         world = null;
         tickets = null;
+        temporary = null;
+        config = null;
+        msd = null;
     }
 
     public static AntaresPrison getInstance() {
