@@ -15,9 +15,20 @@ public class MessageConstants {
 
     public static String[] PLUGIN_SUMMARY = {
             "&6              AntaresPrison",
-            "&7  You are Running AntaresPrison &6v1.2",
+            "&7  You are Running AntaresPrison &6{VERSION}",
             "&7        For help use &c/prison help"
     };
+
+    private static String secretPlaceholders(String sph) {
+        return sph
+                .replaceAll("\\{VERSION\\}", AntaresPrison.getInstance().getDescription().getVersion());
+    }
+
+    public static void updatePluginSummary() {
+        PLUGIN_SUMMARY[0] = secretPlaceholders(PLUGIN_SUMMARY[0]);
+        PLUGIN_SUMMARY[1] = secretPlaceholders(PLUGIN_SUMMARY[1]);
+        PLUGIN_SUMMARY[2] = secretPlaceholders(PLUGIN_SUMMARY[2]);
+    }
 
     public static String[] HELP = {
             "&n&8o-------------------------------------------o",

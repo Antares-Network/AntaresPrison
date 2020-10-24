@@ -47,7 +47,7 @@ public class BalanceCommand implements CommandExecutor {
                 return true;
             }
             bal = economy.balanceOf(player);
-            MessageSender.toPlayer(MessageConstants.BALANCE(bal, playername), player, true);
+            MessageSender.toPlayer(MessageConstants.BALANCE(bal, playername), sender, true);
             return true;
         } else {
             MessageSender.toPlayer(MessageConstants.WRONG_ARGUMENTS, sender, true);

@@ -3,16 +3,22 @@
 #            ~~~~~~~~~~~~~~~~
 #
 
-# The world, the plugin should work in
+# The world, the plugin should work in | String
 world: 'WORLD_NOT_SET'
 
-# Basic ticket all players get
+# Basic ticket all players get | String
 basic_ticket: 'tier_1'
 
-# Plugin message prefix
+# Plugin message prefix | String
 prefix: '&6&lPrison &8{>>} '
 
-# Messages
+# Time between inteligent regens (in minutes) | Integer
+intelli-regen-time: 20
+
+# Time between force regens (in minutes) | Integer
+force-regen-time: 3
+
+# Messages | String...
 messages:
   plugin_enable: '&7Enabling plugin ..'
   plugin_disable: '&7Disabling plugin ..'

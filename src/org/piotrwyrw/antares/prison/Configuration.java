@@ -2,7 +2,6 @@ package org.piotrwyrw.antares.prison;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
-import org.bukkit.WorldCreator;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.piotrwyrw.antares.prison.constants.MessageConstants;
@@ -15,6 +14,8 @@ public class Configuration {
     public FileConfiguration configuration;
     public String basic_ticket;
     public World world;
+    public int intelliRegenTime;
+    public int forceRegenTime;
 
     public Configuration(String filename) {
         File f = new File(AntaresPrison.getInstance().getDataFolder(), filename);
@@ -59,6 +60,14 @@ public class Configuration {
         }
 
         this.world = Bukkit.getWorld(wname);
+
+        try {
+            this.intelliRegenTime = Integer.parseInt(safeLoad("intelli-regen-time", "3"));
+            this.forceRegenTime = Integer.parseInt(safeLoad("force-regen-time", "20"));
+        } catch (NumberFormatException nfe) {
+            this.intelliRegenTime = 3;
+            this.forceRegenTime = 20;
+        }
 
         MessageConstants.PREFIX = safeLoad("prefix", MessageConstants.PREFIX);
         MessageConstants.PLUGIN_ENABLE = safeLoad("messages.plugin_enable", MessageConstants.PLUGIN_ENABLE);

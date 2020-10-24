@@ -65,6 +65,8 @@ public class AntaresPrison extends JavaPlugin {
         if (!checkMultiverseCore())
             return;
 
+        MessageConstants.updatePluginSummary();
+
         if (!getDataFolder().exists()) {
             getDataFolder().mkdir();
         }
@@ -79,6 +81,7 @@ public class AntaresPrison extends JavaPlugin {
 
         if (!config.loadFromFile())
             return;
+
         mines.loadFromFile();
         economy.loadFromFile();
         worthManager.loadFromFile();
@@ -89,7 +92,7 @@ public class AntaresPrison extends JavaPlugin {
 
         this.world = config.world;
 
-        autoRegen.startBoth(3, 20);
+        autoRegen.startBoth(config.intelliRegenTime, config.forceRegenTime);
 
         PrisonPlaceHolders ph = new PrisonPlaceHolders();
         ph.register();
