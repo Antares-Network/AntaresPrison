@@ -19,7 +19,7 @@ public class MessageSender {
      * @param message
      * @param withPrefix
      */
-    public static void toAllAdmins(String message, boolean withPrefix) {
+    public void toAllAdmins(String message, boolean withPrefix) {
         for (Player p : Bukkit.getOnlinePlayers()) {
             if (p.hasPermission(PermissionConstants.RECEIVE_ADMIN_MESSAGES)) {
                 p.sendMessage(MessageConstants.construct(message, withPrefix));
@@ -31,7 +31,7 @@ public class MessageSender {
      * Send a multi-line-message to all admins
      * @param message
      */
-    public static void toAllAdmins(String[] message, boolean withPrefix) {
+    public void toAllAdmins(String[] message, boolean withPrefix) {
         for (String line : message) {
             toAllAdmins(line, withPrefix);
         }
@@ -43,7 +43,7 @@ public class MessageSender {
      * @param permission
      * @param withPrefix
      */
-    public static void toEveryone(String message, String permission, boolean withPrefix) {
+    public void toEveryone(String message, String permission, boolean withPrefix) {
         for (Player p : Bukkit.getOnlinePlayers()) {
             if (p.getWorld() != AntaresPrison.getInstance().world)
                 continue;
@@ -59,7 +59,7 @@ public class MessageSender {
      * @param permission
      * @param withPrefix
      */
-    public static void toEveryone(String[] message, String permission, boolean withPrefix) {
+    public void toEveryone(String[] message, String permission, boolean withPrefix) {
         for (String line : message) {
             toEveryone(line, permission, withPrefix);
         }
@@ -70,7 +70,7 @@ public class MessageSender {
      * @param message
      * @param withPrefix
      */
-    public static void toEveryone(String message, boolean withPrefix) {
+    public void toEveryone(String message, boolean withPrefix) {
         for (Player p : Bukkit.getOnlinePlayers()) {
             if (p.getWorld() != AntaresPrison.getInstance().world)
                 continue;
@@ -83,7 +83,7 @@ public class MessageSender {
      * @param message
      * @param withPrefix
      */
-    public static void toEveryone(String[] message, boolean withPrefix) {
+    public void toEveryone(String[] message, boolean withPrefix) {
         for (String line : message) {
             toEveryone(line, withPrefix);
         }
@@ -96,7 +96,7 @@ public class MessageSender {
      * @param withPrefix
      */
 
-    public static void toPlayer(String message, CommandSender player, boolean withPrefix) {
+    public void toPlayer(String message, CommandSender player, boolean withPrefix) {
         if (player instanceof Player)
             if (AntaresPrison.getInstance().temporary.lastMessageOf((Player)player).equals(message))
                 return;
@@ -105,7 +105,7 @@ public class MessageSender {
         player.sendMessage(MessageConstants.construct(message, withPrefix));
     }
 
-    public static void toPlayer(String message, Player player, boolean withPrefix) {
+    public void toPlayer(String message, Player player, boolean withPrefix) {
         toPlayer(message, (CommandSender)player, withPrefix);
     }
 
@@ -115,13 +115,13 @@ public class MessageSender {
      * @param player
      * @param withPrefix
      */
-    public static void toPlayer(String[] message, CommandSender player, boolean withPrefix) {
+    public void toPlayer(String[] message, CommandSender player, boolean withPrefix) {
         for (String line : message) {
             toPlayer(line, player, withPrefix);
         }
     }
 
-    public static void toPlayer(String[] message, Player player, boolean withPrefix) {
+    public void toPlayer(String[] message, Player player, boolean withPrefix) {
         toPlayer(message, (CommandSender)player, withPrefix);
     }
 

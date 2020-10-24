@@ -12,8 +12,10 @@ import org.piotrwyrw.antares.prison.utils.MessageSender;
 public class RegenCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        MessageSender msd = AntaresPrison.getInstance().msd;
+
         if (!sender.hasPermission(PermissionConstants.REGEN)) {
-            MessageSender.toPlayer(MessageConstants.PERMISSION_DENIED, sender, true);
+            msd.toPlayer(MessageConstants.PERMISSION_DENIED, sender, true);
             return true;
         }
 
@@ -29,7 +31,7 @@ public class RegenCommand implements CommandExecutor {
             int index = 0;
 
             if (!mines.mineExists(mine)) {
-                MessageSender.toPlayer(MessageConstants.NO_SUCH_MINE(mine), sender, true);
+                msd.toPlayer(MessageConstants.NO_SUCH_MINE(mine), sender, true);
                 return true;
             }
 
@@ -38,7 +40,7 @@ public class RegenCommand implements CommandExecutor {
             mines.list.get(index).regenerate(true);
             return true;
         } else {
-            MessageSender.toPlayer(MessageConstants.WRONG_ARGUMENTS, sender, true);
+            msd.toPlayer(MessageConstants.WRONG_ARGUMENTS, sender, true);
             return true;
         }
     }

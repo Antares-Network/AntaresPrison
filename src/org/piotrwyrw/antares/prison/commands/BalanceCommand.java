@@ -14,8 +14,10 @@ import org.piotrwyrw.antares.prison.utils.MessageSender;
 public class BalanceCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        MessageSender msd = AntaresPrison.getInstance().msd;
+
         if (!(sender instanceof Player)) {
-            MessageSender.toPlayer(MessageConstants.MUST_BE_PLAYER, sender, true);
+            msd.toPlayer(MessageConstants.MUST_BE_PLAYER, sender, true);
             return true;
         }
 
@@ -24,18 +26,18 @@ public class BalanceCommand implements CommandExecutor {
         if (args.length == 1) {
             // Own balance
             if (!sender.hasPermission(PermissionConstants.BALANCE_OWN)) {
-                MessageSender.toPlayer(MessageConstants.PERMISSION_DENIED, sender, true);
+                msd.toPlayer(MessageConstants.PERMISSION_DENIED, sender, true);
                 return true;
             }
 
             double bal = economy.balanceOf((Player) sender);
 
-            MessageSender.toPlayer(MessageConstants.BALANCE(bal), sender, true);
+            msd.toPlayer(MessageConstants.BALANCE(bal), sender, true);
             return true;
         } else if (args.length == 2) {
             // Other balance
             if (!sender.hasPermission(PermissionConstants.BALANCE_OTHER)) {
-                MessageSender.toPlayer(MessageConstants.PERMISSION_DENIED, sender, true);
+                msd.toPlayer(MessageConstants.PERMISSION_DENIED, sender, true);
                 return true;
             }
 
@@ -43,14 +45,14 @@ public class BalanceCommand implements CommandExecutor {
             Player player = Bukkit.getPlayer(playername);
             double bal;
             if (player == null) {
-                MessageSender.toPlayer(MessageConstants.NO_SUCH_PLAYER(playername), sender, true);
+                msd.toPlayer(MessageConstants.NO_SUCH_PLAYER(playername), sender, true);
                 return true;
             }
             bal = economy.balanceOf(player);
-            MessageSender.toPlayer(MessageConstants.BALANCE(bal, playername), sender, true);
+            msd.toPlayer(MessageConstants.BALANCE(bal, playername), sender, true);
             return true;
         } else {
-            MessageSender.toPlayer(MessageConstants.WRONG_ARGUMENTS, sender, true);
+            msd.toPlayer(MessageConstants.WRONG_ARGUMENTS, sender, true);
             return true;
         }
     }

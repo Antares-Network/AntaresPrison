@@ -11,13 +11,15 @@ import org.piotrwyrw.antares.prison.utils.MessageSender;
 public class ReloadCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        MessageSender msd = AntaresPrison.getInstance().msd;
+
         if (!sender.hasPermission(PermissionConstants.RELOAD)) {
-            MessageSender.toPlayer(MessageConstants.PERMISSION_DENIED, sender, true);
+            msd.toPlayer(MessageConstants.PERMISSION_DENIED, sender, true);
             return true;
         }
         AntaresPrison.getInstance().onDisable();
         AntaresPrison.getInstance().loadPlugin();
-        MessageSender.toAllAdmins(MessageConstants.RELOAD_COMPLETE, true);
+        msd.toAllAdmins(MessageConstants.RELOAD_COMPLETE, true);
         return false;
     }
 }

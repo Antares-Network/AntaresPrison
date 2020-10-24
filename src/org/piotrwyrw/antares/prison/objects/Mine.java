@@ -33,7 +33,7 @@ public class Mine {
             Location loc = p.getLocation();
             if (area.hasLocation(p.getLocation())) {
                 p.teleport(new Location(area.getMaximum().getWorld(), area.getMaximum().getX(), area.getMaximum().getY() + 2, area.getMaximum().getZ()));
-                MessageSender.toPlayer(MessageConstants.MINE_REGEN_TP, p, true);
+                AntaresPrison.getInstance().msd.toPlayer(MessageConstants.MINE_REGEN_TP, p, true);
             }
         }
     }
@@ -55,7 +55,7 @@ public class Mine {
             }
         }
         if (sendMessage) {
-            MessageSender.toEveryone(MessageConstants.MINE_REGEN(identifier), true);
+            AntaresPrison.getInstance().msd.toEveryone(MessageConstants.MINE_REGEN(identifier), true);
         }
     }
 

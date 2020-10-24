@@ -15,9 +15,10 @@ public class MineListCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Mines mines = AntaresPrison.getInstance().mines;
+        MessageSender msd = AntaresPrison.getInstance().msd;
 
         if (!sender.hasPermission(PermissionConstants.MINE_LIST)) {
-            MessageSender.toPlayer(MessageConstants.PERMISSION_DENIED, sender, true);
+            msd.toPlayer(MessageConstants.PERMISSION_DENIED, sender, true);
             return true;
         }
 
@@ -31,7 +32,7 @@ public class MineListCommand implements CommandExecutor {
                     "&7World: &6" + mine.area.min.getWorld().getName(),
                     ""
             };
-            MessageSender.toPlayer(summary, sender, false);
+            msd.toPlayer(summary, sender, false);
         }
         return true;
     }

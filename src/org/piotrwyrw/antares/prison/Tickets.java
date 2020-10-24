@@ -24,7 +24,7 @@ public class Tickets {
             try {
                 f.createNewFile();
             } catch (IOException e) {
-                MessageSender.toAllAdmins(MessageConstants.COULD_NOT_CREATE_FILE(filename), true);
+                AntaresPrison.getInstance().msd.toAllAdmins(MessageConstants.COULD_NOT_CREATE_FILE(filename), true);
                 e.printStackTrace();
             }
         }
@@ -54,6 +54,8 @@ public class Tickets {
     }
 
     public void saveToFile() {
+        MessageSender msd = AntaresPrison.getInstance().msd;
+
         Set<UUID> keys = tickets.keySet();
         UUID[] keyarr = keys.toArray(new UUID[keys.size()]);
         for (UUID uuid : keyarr) {
@@ -61,9 +63,9 @@ public class Tickets {
         }
         try {
             configuration.save(this.file);
-            MessageSender.toAllAdmins(MessageConstants.TICKETS_SAVED, true);
+            msd.toAllAdmins(MessageConstants.TICKETS_SAVED, true);
         } catch (IOException e) {
-            MessageSender.toAllAdmins(MessageConstants.COULD_NOT_SAVE_TICKETS, true);
+            msd.toAllAdmins(MessageConstants.COULD_NOT_SAVE_TICKETS, true);
             e.printStackTrace();
         }
     }

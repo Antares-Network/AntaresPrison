@@ -15,6 +15,8 @@ public class InteractEvent implements Listener {
 
     @EventHandler
     public void onEvent(PlayerInteractEvent evt) {
+        MessageSender msd = AntaresPrison.getInstance().msd;
+
         if (evt.getPlayer().getWorld() != AntaresPrison.getInstance().world)
             return;
         if (evt.getAction() == Action.RIGHT_CLICK_BLOCK && evt.getClickedBlock().getType() == Material.OAK_SIGN)
@@ -30,7 +32,7 @@ public class InteractEvent implements Listener {
                     return;
             }
             evt.setCancelled(true);
-            MessageSender.toPlayer(MessageConstants.CANT_DO_THAT_HERE, evt.getPlayer(), true);
+            msd.toPlayer(MessageConstants.CANT_DO_THAT_HERE, evt.getPlayer(), true);
             return;
         }
     }

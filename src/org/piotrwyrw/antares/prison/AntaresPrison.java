@@ -23,6 +23,7 @@ public class AntaresPrison extends JavaPlugin {
     public Tickets tickets;
     public Configuration config;
     public Temporary temporary;
+    public MessageSender msd;
 
     private boolean checkPlaceholderAPI() {
         if (!getServer().getPluginManager().getPlugin("PlaceholderAPI").isEnabled()) {
@@ -44,7 +45,7 @@ public class AntaresPrison extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        MessageSender.toAllAdmins(MessageConstants.PLUGIN_ENABLE, true);
+        msd.toAllAdmins(MessageConstants.PLUGIN_ENABLE, true);
         antaresPrison = this;
 
         System.out.println("Enabling plugin in 10 seconds ...");
@@ -123,13 +124,13 @@ public class AntaresPrison extends JavaPlugin {
     }
 
     private void registerCommands() {
-        getCommand("prison").setExecutor(new PrisonCommand());
+        getCommand("prisons").setExecutor(new PrisonCommand());
     }
 
     @Override
     public void onDisable() {
         HandlerList.unregisterAll(this);
-        MessageSender.toAllAdmins(MessageConstants.PLUGIN_DISABLE, true);
+        msd.toAllAdmins(MessageConstants.PLUGIN_DISABLE, true);
         Bukkit.getScheduler().cancelTasks(this);
         economy.saveToFile();
         tickets.saveToFile();

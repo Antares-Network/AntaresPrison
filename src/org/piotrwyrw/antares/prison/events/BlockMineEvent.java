@@ -35,12 +35,14 @@ public class BlockMineEvent implements Listener {
 
     @EventHandler
     public void onEvent(BlockBreakEvent evt) {
+        MessageSender msd = AntaresPrison.getInstance().msd;
+
         if (evt.getPlayer().getWorld() != AntaresPrison.getInstance().world)
             return;
 
         if (!AntaresPrison.getInstance().mines.hasLocation(evt.getBlock().getLocation()) &&
                 !evt.getPlayer().hasPermission(PermissionConstants.MODIFY_WORLD)) {
-            MessageSender.toPlayer(MessageConstants.CANT_DO_THAT_HERE, evt.getPlayer(), true);
+            msd.toPlayer(MessageConstants.CANT_DO_THAT_HERE, evt.getPlayer(), true);
             evt.setCancelled(true);
             return;
         }

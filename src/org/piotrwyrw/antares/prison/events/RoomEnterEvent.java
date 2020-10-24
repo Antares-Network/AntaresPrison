@@ -35,7 +35,7 @@ public class RoomEnterEvent implements Listener {
                 Location veloc = vel.toLocation(evt.getPlayer().getWorld());
                 Location nloc = new Location(veloc.getWorld(), veloc.getX(), 0, veloc.getZ());
                 evt.getPlayer().teleport(evt.getPlayer().getLocation().add(nloc));
-                MessageSender.toPlayer(MessageConstants.CANNOT_ENTER_ROOM, evt.getPlayer(), true);
+                AntaresPrison.getInstance().msd.toPlayer(MessageConstants.CANNOT_ENTER_ROOM, evt.getPlayer(), true);
                 break;
             }
         }

@@ -27,7 +27,7 @@ public class Mines {
             try {
                 f.createNewFile();
             } catch (IOException e) {
-                MessageSender.toAllAdmins(MessageConstants.COULD_NOT_CREATE_FILE(filename), true);
+                AntaresPrison.getInstance().msd.toAllAdmins(MessageConstants.COULD_NOT_CREATE_FILE(filename), true);
                 e.printStackTrace();
             }
         }
@@ -124,6 +124,6 @@ public class Mines {
         for (int i = 0; i < list.size(); i ++ ) {
             list.get(i).regenerate(false);
         }
-        MessageSender.toEveryone(MessageConstants.MINE_REGEN_ALL, true);
+        AntaresPrison.getInstance().msd.toEveryone(MessageConstants.MINE_REGEN_ALL, true);
     }
 }

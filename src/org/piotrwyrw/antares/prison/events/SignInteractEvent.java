@@ -13,6 +13,8 @@ public class SignInteractEvent implements Listener {
 
     @EventHandler
     public void onEvent(PlayerInteractEvent evt) {
+        MessageSender msd = AntaresPrison.getInstance().msd;
+
         if (evt.getPlayer().getWorld() != AntaresPrison.getInstance().world)
             return;
         if (evt.getAction() != Action.RIGHT_CLICK_BLOCK)
@@ -36,11 +38,11 @@ public class SignInteractEvent implements Listener {
             return;
         }
         if (AntaresPrison.getInstance().tickets.hasTicket(evt.getPlayer(), ticket)) {
-            MessageSender.toPlayer(MessageConstants.ALREADY_HAS_TICKET, evt.getPlayer(), true);
+            msd.toPlayer(MessageConstants.ALREADY_HAS_TICKET, evt.getPlayer(), true);
             return;
         }
         if (AntaresPrison.getInstance().economy.balanceOf(evt.getPlayer()) < price) {
-            MessageSender.toPlayer(MessageConstants.NOT_ENOUGH_MONEY, evt.getPlayer(), true);
+            msd.toPlayer(MessageConstants.NOT_ENOUGH_MONEY, evt.getPlayer(), true);
             return;
         }
 

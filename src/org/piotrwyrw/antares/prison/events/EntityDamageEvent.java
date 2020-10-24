@@ -14,6 +14,8 @@ public class EntityDamageEvent implements Listener {
 
     @EventHandler
     public void onEvent(EntityDamageByEntityEvent evt) {
+        MessageSender msd = AntaresPrison.getInstance().msd;
+
         if (evt.getDamager().getWorld() != AntaresPrison.getInstance().world)
             return;
         if (evt.getDamager().getType() != EntityType.PLAYER)
@@ -24,7 +26,7 @@ public class EntityDamageEvent implements Listener {
         if (p.hasPermission(PermissionConstants.DAMAGE_ENTITIES))
             return;
 
-        MessageSender.toPlayer(MessageConstants.CANT_DO_THAT_HERE, p, true);
+        msd.toPlayer(MessageConstants.CANT_DO_THAT_HERE, p, true);
         evt.setCancelled(true);
     }
 

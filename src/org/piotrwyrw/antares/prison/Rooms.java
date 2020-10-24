@@ -25,7 +25,7 @@ public class Rooms {
             try {
                 f.createNewFile();
             } catch (IOException e) {
-                MessageSender.toAllAdmins(MessageConstants.COULD_NOT_CREATE_FILE(filename), true);
+                AntaresPrison.getInstance().msd.toAllAdmins(MessageConstants.COULD_NOT_CREATE_FILE(filename), true);
                 e.printStackTrace();
             }
         }

@@ -23,7 +23,7 @@ public class Economy {
             try {
                 f.createNewFile();
             } catch (IOException e) {
-                MessageSender.toAllAdmins(MessageConstants.COULD_NOT_CREATE_FILE(filename), true);
+                AntaresPrison.getInstance().msd.toAllAdmins(MessageConstants.COULD_NOT_CREATE_FILE(filename), true);
                 e.printStackTrace();
             }
         }
@@ -32,14 +32,16 @@ public class Economy {
     }
 
     public void saveToFile() {
+        MessageSender msd = AntaresPrison.getInstance().msd;
+
         for (UUID uuid : balance.keySet().toArray(new UUID[balance.keySet().size()])) {
             configuration.set("economy." + uuid.toString() + ".money", balance.get(uuid));
         }
         try {
             configuration.save(file);
-            MessageSender.toAllAdmins(MessageConstants.ECONOMY_SAVED, true);
+            msd.toAllAdmins(MessageConstants.ECONOMY_SAVED, true);
         } catch (IOException e) {
-            MessageSender.toAllAdmins(MessageConstants.COULD_NOT_SAVE_ECONOMY, true);
+            msd.toAllAdmins(MessageConstants.COULD_NOT_SAVE_ECONOMY, true);
             e.printStackTrace();
         }
     }
@@ -62,7 +64,7 @@ public class Economy {
         try {
             configuration.save(file);
         } catch (IOException e) {
-            MessageSender.toAllAdmins(MessageConstants.COULD_NOT_SAVE_ECONOMY, true);
+            AntaresPrison.getInstance().msd.toAllAdmins(MessageConstants.COULD_NOT_SAVE_ECONOMY, true);
             e.printStackTrace();
         }
 

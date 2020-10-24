@@ -12,12 +12,14 @@ public class BlockPlacedEvent implements Listener {
     
     @EventHandler
     public void onEvent(BlockPlaceEvent evt) {
+        MessageSender msd = AntaresPrison.getInstance().msd;
+
         if (evt.getPlayer().getWorld() != AntaresPrison.getInstance().world)
             return;
         if (evt.getPlayer().hasPermission(PermissionConstants.MODIFY_WORLD))
             return;
         evt.setCancelled(true);
-        MessageSender.toPlayer(MessageConstants.CANT_DO_THAT_HERE, evt.getPlayer(), true);
+        msd.toPlayer(MessageConstants.CANT_DO_THAT_HERE, evt.getPlayer(), true);
     }
     
 }
