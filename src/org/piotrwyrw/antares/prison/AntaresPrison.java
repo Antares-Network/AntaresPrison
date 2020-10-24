@@ -75,6 +75,8 @@ public class AntaresPrison extends JavaPlugin {
         if (!config.loadFromFile())
             return;
 
+        this.world = config.world;
+
         mines.loadFromFile();
         economy.loadFromFile();
         worthManager.loadFromFile();
@@ -82,8 +84,6 @@ public class AntaresPrison extends JavaPlugin {
         tickets.loadFromFile();
 
         mines.regenAllMines();
-
-        this.world = config.world;
 
         autoRegen.startBoth(config.intelliRegenTime, config.forceRegenTime);
 
