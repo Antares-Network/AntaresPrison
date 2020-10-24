@@ -9,7 +9,5 @@
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
-
 To report a security vulnerability or plugin exploit, Please create a bug report and mark it with the tag **SECURITY FLAW**
 You can expect a quick reply, ~within 1 business day, to your issue.
