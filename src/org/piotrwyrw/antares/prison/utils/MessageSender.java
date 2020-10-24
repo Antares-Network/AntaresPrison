@@ -97,6 +97,11 @@ public class MessageSender {
      */
 
     public static void toPlayer(String message, CommandSender player, boolean withPrefix) {
+        if (player instanceof Player)
+            if (AntaresPrison.getInstance().temporary.lastMessageOf((Player)player).equals(message))
+                return;
+            else
+                AntaresPrison.getInstance().temporary.setLastMessage(((Player)(player)), message);
         player.sendMessage(MessageConstants.construct(message, withPrefix));
     }
 

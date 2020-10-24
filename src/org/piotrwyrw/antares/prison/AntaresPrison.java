@@ -22,6 +22,7 @@ public class AntaresPrison extends JavaPlugin {
     public Rooms rooms;
     public Tickets tickets;
     public Configuration config;
+    public Temporary temporary;
 
     private boolean checkPlaceholderAPI() {
         if (!getServer().getPluginManager().getPlugin("PlaceholderAPI").isEnabled()) {
@@ -78,6 +79,7 @@ public class AntaresPrison extends JavaPlugin {
         tickets = new Tickets("tickets.yml");
         autoRegen = new MineAutoRegen();
         config = new Configuration("config.yml");
+        temporary = new Temporary();
 
         if (!config.loadFromFile())
             return;
