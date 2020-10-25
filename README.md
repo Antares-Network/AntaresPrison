@@ -38,14 +38,20 @@ It has 4 gamemodes: Factions, Skyblock, Creative Plots, and Prisons
 * **prisons.skip_room** -- allows the player to enter a room they have not bought the tier for yet
 
 
-# How-To's
-### To create a "rankup" sign, type it like this:  
+# Tutorials
+## Creating a rankup sign
+To create a rankup sign, you must use the format below.
+```c
 [prison:ticket]  
-tier_#  
-{value}  
-
-
-
+ticket
+{value}
+```
+### Example
+```c
+[prison:ticket]
+tier_2
+20000
+```
 
 # IMPORTANT DISCLAIMER
 
