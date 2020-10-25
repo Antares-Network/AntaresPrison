@@ -43,3 +43,10 @@ It has 4 gamemodes: Factions, Skyblock, Creative Plots, and Prisons
 [prison:ticket]  
 tier_#  
 {value}  
+
+
+
+
+# IMPORTANT DISCLAIMER
+
+* This plugin does **not** generate the world for you and you **must generate your own prisons world**  and then assign the coordinates of all of the mines in the **mines.yml**. You also need to tell the plugin where the doors to each of your rooms are in the **rooms.yml** file.
