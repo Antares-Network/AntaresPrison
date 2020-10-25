@@ -119,6 +119,9 @@ rooms:
       
 ```
 
+# Other config files
+The **economy.yml, tickets.yml, and worth.yml** do not need to be configured and are managed automatically. If you want to change the worth of blocks in the mines change that in **worth.yml**
+
 # IMPORTANT DISCLAIMER
 
 * This plugin does **not** generate the world for you and you **must generate your own prisons world**  and then assign the coordinates of all of the mines in the **mines.yml**. You also need to tell the plugin where the doors to each of your rooms are in the **rooms.yml** file.
