@@ -123,8 +123,8 @@ rooms:
 The **economy.yml, tickets.yml, and worth.yml** do not need to be configured and are managed automatically. If you want to change the worth of blocks in the mines change that in **worth.yml**
 
 # Placeholders
-%prisons_balance% - This is the players balance. It is **NOT** tied to the Essentials economy in **ANY WAY**
-%prisons_tier% -  This shows the mine tier that the player has unlocked
+* **%prisons_balance%** - This is the players balance. It is **NOT** tied to the Essentials economy in **ANY WAY**  
+* **%prisons_tier%** -  This shows the mine tier that the player has unlocked
 
 # IMPORTANT DISCLAIMER
 
