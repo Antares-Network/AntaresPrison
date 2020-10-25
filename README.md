@@ -53,6 +53,37 @@ tier_2
 20000
 ```
 
+## Adding a mine
+To add a mine, you have to work with the `mines.yml` file.
+This file is being generated when the plugin enables for the first time.
+[Material Cheatsheet](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html)
+```yml
+mines:
+
+  # The name of the mine, so how you reference to this mine in a command
+  my_custom_mine:
+    area:
+      # Coordinates from
+      fromx: 0
+      fromy: 0
+      fromz: 0
+      
+      # Coordinates to
+      tox: 10
+      toy: 10
+      toz: 10
+      
+      # Location world
+      world: 'prisons'
+      
+    # Materials that will spawn in the mine (See cheatsheet)
+    materials:
+      - 'STONE'
+      - 'IRON_ORE'
+      - 'GOLD_ORE'
+      - 'COBBLESTONE'
+```
+
 # IMPORTANT DISCLAIMER
 
 * This plugin does **not** generate the world for you and you **must generate your own prisons world**  and then assign the coordinates of all of the mines in the **mines.yml**. You also need to tell the plugin where the doors to each of your rooms are in the **rooms.yml** file.
