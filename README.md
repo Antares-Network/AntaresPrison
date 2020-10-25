@@ -43,8 +43,8 @@ It has 4 gamemodes: Factions, Skyblock, Creative Plots, and Prisons
 To create a rankup sign, you must use the format below.
 ```c
 [prison:ticket]  
-ticket
-{value}
+{ticket name}
+{price}
 ```
 ### Example
 ```c
