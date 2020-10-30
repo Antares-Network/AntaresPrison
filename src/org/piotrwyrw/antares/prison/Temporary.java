@@ -12,21 +12,35 @@ public class Temporary {
 
     public Temporary() {}
 
-    public void setLastMessage(Player p, String message) {
+    public void setLastMessage(Player p, String message, boolean erase, long eraseAfter) {
         if (!lastMessage.containsKey(p)) {
             lastMessage.put(p, message);
             return;
         }
+
+        if (!erase)
+            return;
+
+        new BukkitRunnable() {
+
+            @Override
+            public void run() {
+                setLastMessage(p, "");
+            }
+        }.runTaskLater(AntaresPrison.getInstance(), eraseAfter);
+
         lastMessage.replace(p, message);
+    }
+
+    public void setLastMessage(Player p, String message) {
+        setLastMessage(p, message, false, 0);
     }
 
     public String lastMessageOf(Player p) {
         if (!lastMessage.containsKey(p))
-            setLastMessage(p, "");
+            setLastMessage(p, "", false, 0);
         return lastMessage.get(p);
     }
-
-
 
     public void setLastCommandTemporarily(Player p, String command, boolean erase, long eraseAfter) {
         if (!lastCommand.containsKey(p))

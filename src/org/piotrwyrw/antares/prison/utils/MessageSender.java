@@ -48,7 +48,7 @@ public class MessageSender {
             if (p.getWorld() != AntaresPrison.getInstance().world)
                 continue;
             if (p.hasPermission(permission)) {
-                AntaresPrison.getInstance().temporary.setLastMessage(p, "");
+                AntaresPrison.getInstance().temporary.setLastMessage(p, "", false, 0);
                 p.sendMessage(MessageConstants.construct(message, withPrefix));
             }
         }
@@ -75,7 +75,7 @@ public class MessageSender {
         for (Player p : Bukkit.getOnlinePlayers()) {
             if (p.getWorld() != AntaresPrison.getInstance().world)
                 continue;
-            AntaresPrison.getInstance().temporary.setLastMessage(p, "");
+            AntaresPrison.getInstance().temporary.setLastMessage(p, "", false, 0);
             p.sendMessage(MessageConstants.construct(message, withPrefix));
         }
     }
@@ -103,7 +103,7 @@ public class MessageSender {
             if (AntaresPrison.getInstance().temporary.lastMessageOf((Player)player).equals(message))
                 return;
             else
-                AntaresPrison.getInstance().temporary.setLastMessage(((Player)(player)), message);
+                AntaresPrison.getInstance().temporary.setLastMessage(((Player)(player)), message, true, 20 * 60);
         player.sendMessage(MessageConstants.construct(message, withPrefix));
     }
 
