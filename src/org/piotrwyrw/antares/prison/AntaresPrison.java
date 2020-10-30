@@ -113,6 +113,7 @@ public class AntaresPrison extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new SignInteractEvent(), this);
         getServer().getPluginManager().registerEvents(new BlockPlacedEvent(), this);
         getServer().getPluginManager().registerEvents(new TeleportEvent(), this);
+        getServer().getPluginManager().registerEvents(new CommandEvent(), this);
     }
 
     private void registerCommands() {

@@ -29,6 +29,12 @@ public class TeleportEvent implements Listener {
         if (to.getWorld() != AntaresPrison.getInstance().world)
             return;
 
+        String lastCommand = AntaresPrison.getInstance().temporary.lastCommandOf(evt.getPlayer());
+
+        // Eh .. we don't care yet ..
+        if (!lastCommand.contains("/tpa ") && !lastCommand.contains("/tpask "))
+            return;
+
         evt.setCancelled(true);
         msd.toPlayer(MessageConstants.CANNOT_TELEPORT, evt.getPlayer(), true);
     }
