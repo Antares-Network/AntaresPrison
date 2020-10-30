@@ -55,8 +55,10 @@ tier_2
 
 ## Adding a mine
 To add a mine, you have to work with the `mines.yml` file.
-This file is being generated when the plugin enables for the first time.
+This file is generated when the plugin enables for the first time.
 [Material Cheatsheet](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html)
+
+##### Example file:
 ```yml
 mines:
 
@@ -82,7 +84,47 @@ mines:
       - 'IRON_ORE'
       - 'GOLD_ORE'
       - 'COBBLESTONE'
+   ...
 ```
+
+## Adding a room
+To add a room, you have to work with the `rooms.yml` file.
+This file is generated when the plugin enables for the first time.
+
+##### Example file:
+```yml
+
+rooms:
+  tier_1:
+    ticket: 'tier_1'
+    area:
+      fromx: -8
+      fromy: 26
+      fromz: -76
+      tox: 24
+      toy: 4
+      toz: -110
+      world: 'prisons'
+  tier_2:
+    ticket: 'tier_2'
+    area:
+      fromx: -8
+      fromy: 26
+      fromz: -111
+      tox: 24
+      toy: 4
+      toz: -143
+      world: 'prisons'
+   ...
+      
+```
+
+# Other config files
+The **economy.yml, tickets.yml, and worth.yml** do not need to be configured and are managed automatically. If you want to change the worth of blocks in the mines change that in **worth.yml**
+
+# Placeholders
+* **%prisons_balance%** - This is the players balance. It is **NOT** tied to the Essentials economy in **ANY WAY**  
+* **%prisons_tier%** -  This shows the mine tier that the player has unlocked
 
 # IMPORTANT DISCLAIMER
 
