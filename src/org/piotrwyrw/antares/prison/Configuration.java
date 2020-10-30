@@ -1,5 +1,6 @@
 package org.piotrwyrw.antares.prison;
 
+import com.mojang.brigadier.Message;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -86,6 +87,7 @@ public class Configuration {
         MessageConstants.CANNOT_ENTER_ROOM = safeLoad("messages.can_not_enter_room", MessageConstants.CANNOT_ENTER_ROOM);
         MessageConstants.ALREADY_HAS_TICKET = safeLoad("messages.already_has_ticket", MessageConstants.ALREADY_HAS_TICKET);
         MessageConstants.NOT_ENOUGH_MONEY = safeLoad("messages.not_enough_money", MessageConstants.NOT_ENOUGH_MONEY);
+        MessageConstants.CANNOT_TELEPORT = safeLoad("messages.can_not_teleport", MessageConstants.CANNOT_TELEPORT);
 
         return true;
     }

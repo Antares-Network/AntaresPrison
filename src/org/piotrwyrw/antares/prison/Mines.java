@@ -50,6 +50,8 @@ public class Mines {
             }
 
             int fromX, fromY, fromZ, toX, toY, toZ;
+            double asX = 0.0, asY = 0.0, asZ = 0.0;
+            float asYaw = 0.0f, asPitch = 0.0f;
             String world;
             ArrayList<Material> materials = new ArrayList<Material>();
 
@@ -61,6 +63,11 @@ public class Mines {
                 toY = configuration.getInt("mines." + key + ".area.toy");
                 toZ = configuration.getInt("mines." + key + ".area.toz");
                 world = configuration.getString("mines." + key + ".area.world");
+                asX = configuration.getDouble("mines." + key + ".anti-suffocation.x");
+                asY = configuration.getDouble("mines." + key + ".anti-suffocation.y");
+                asZ = configuration.getDouble("mines." + key + ".anti-suffocation.z");
+                asPitch = (float) configuration.getDouble("mines." + key + ".anti-suffocation.pitch");
+                asYaw = (float) configuration.getDouble("mines." + key + ".anti-suffocation.yaw");
                 if (world == null)
                     continue;
                 List<String> list = configuration.getStringList("mines." + key + ".materials");
@@ -72,11 +79,23 @@ public class Mines {
                     materials.add(Material.getMaterial(list.get(i).toUpperCase()));
                 }
             } catch (NullPointerException npe) {
+                npe.printStackTrace();
+                continue;
+            } catch (NumberFormatException nfe) {
+                nfe.printStackTrace();
                 continue;
             }
 
+            Area a = new Area(new Location(Bukkit.getWorld(world), fromX, fromY, fromZ), new Location(Bukkit.getWorld(world), toX, toY, toZ));
+
+            if (asX == 0.0 && asY == 0.0 && asZ == 0.0) {
+                asX = a.getMaximum().getX();
+                asY = a.getMaximum().getY() + 2;
+                asZ = a.getMaximum().getZ();
+            }
+
             if (!mineExists(key)) {
-                Mine m = new Mine(new Area(new Location(Bukkit.getWorld(world), fromX, fromY, fromZ), new Location(Bukkit.getWorld(world), toX, toY, toZ)), materials, key);
+                Mine m = new Mine(new Area(new Location(Bukkit.getWorld(world), fromX, fromY, fromZ), new Location(Bukkit.getWorld(world), toX, toY, toZ)), new Location(Bukkit.getWorld(world), asX, asY, asZ, asYaw, asPitch), materials, key);
                 this.list.add(m);
                 m.regenerate(true);
                 System.out.println("Registered new mine: " + key);

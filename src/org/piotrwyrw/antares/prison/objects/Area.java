@@ -35,6 +35,13 @@ public class Area {
         return max;
     }
 
+    public int volume() {
+        int a = getMaximum().getBlockX() - getMinimum().getBlockX();
+        int b = getMaximum().getBlockY() - getMinimum().getBlockY();
+        int c = getMaximum().getBlockZ() - getMinimum().getBlockZ();
+        return a * b * c;
+    }
+    
     public boolean hasLocation(Location loc) {
         return (loc.getX() <= getMaximum().getX() && loc.getX() >= getMinimum().getX()) &&
                 (loc.getY() <= getMaximum().getY() && loc.getY() >= getMinimum().getY()) &&

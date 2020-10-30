@@ -12,11 +12,12 @@ basic_ticket: 'tier_1'
 # Plugin message prefix | String
 prefix: '&6&lPrison &8{>>} '
 
-# Time between inteligent regens (in minutes) | Integer
-intelli-regen-time: 20
+# Time between intelligent regenerations (in minutes) | Integer
+intelli-regen-time: 3
 
-# Time between force regens (in minutes) | Integer
-force-regen-time: 3
+# Time between force regenerations (in minutes) | Integer
+# You probably want to keep this longer than intelligent regen
+force-regen-time: 20
 
 # Messages | String...
 messages:
@@ -36,3 +37,4 @@ messages:
   can_not_enter_room: '&7You can not enter this room yet.'
   already_has_ticket: '&7You already own this ticket.'
   not_enough_money: '&7You do not have enough money.'
+  can_not_teleport: '&7You can not teleport to this player.'

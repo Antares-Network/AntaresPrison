@@ -1,5 +1,5 @@
 name: AntaresPrison
-version: 1.3
+version: 1.4
 api-version: 1.15
 depend: [PlaceholderAPI, Multiverse-Core]
 authors: [piotrwyrw, nathen418]

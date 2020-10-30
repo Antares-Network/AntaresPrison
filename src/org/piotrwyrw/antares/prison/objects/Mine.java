@@ -16,11 +16,13 @@ import java.util.Random;
  */
 public class Mine {
     public Area area;
+    public Location asloc;
     public ArrayList<Material> materials;
     public String identifier;
 
-    public Mine(Area area, ArrayList<Material> materials, String identifier) {
+    public Mine(Area area, Location asloc, ArrayList<Material> materials, String identifier) {
         this.area = area;
+        this.asloc = asloc;
         this.materials = materials;
         this.identifier = identifier;
     }
@@ -32,7 +34,7 @@ public class Mine {
                 continue;
             Location loc = p.getLocation();
             if (area.hasLocation(p.getLocation())) {
-                p.teleport(new Location(area.getMaximum().getWorld(), area.getMaximum().getX(), area.getMaximum().getY() + 2, area.getMaximum().getZ()));
+                p.teleport(this.asloc);
                 AntaresPrison.getInstance().msd.toPlayer(MessageConstants.MINE_REGEN_TP, p, true);
             }
         }
@@ -73,10 +75,7 @@ public class Mine {
     }
 
     public int volume() {
-        int a = area.getMaximum().getBlockX() - area.getMinimum().getBlockX();
-        int b = area.getMaximum().getBlockY() - area.getMinimum().getBlockY();
-        int c = area.getMaximum().getBlockZ() - area.getMinimum().getBlockZ();
-        return a * b * c;
+        return this.area.volume();
     }
 
     public void regenerate() {

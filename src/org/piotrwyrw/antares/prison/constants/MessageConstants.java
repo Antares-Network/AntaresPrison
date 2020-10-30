@@ -75,6 +75,8 @@ public class MessageConstants {
 
     public static String NOT_ENOUGH_MONEY = "&7You do not have enough money.";
 
+    public static String CANNOT_TELEPORT = "&7You can not teleport to this player.";
+
     public static  String COULD_NOT_CREATE_FILE(String filename) {
         return "&cCould not create file &b" + filename;
     }

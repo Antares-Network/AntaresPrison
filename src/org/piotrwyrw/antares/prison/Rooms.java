@@ -63,12 +63,13 @@ public class Rooms {
                     continue;
                 }
                 ticket = configuration.getString("rooms." + key + ".ticket");
-
             } catch (NullPointerException npe) {
                 npe.printStackTrace();
                 continue;
+            } catch (NumberFormatException nfe) {
+                nfe.printStackTrace();
+                continue;
             }
-
             if (!roomExists(key)) {
                 Room r = new Room(new Area(new Location(Bukkit.getWorld(world), fromX, fromY, fromZ), new Location(Bukkit.getWorld(world), toX, toY, toZ)), ticket, key);
                 System.out.println("Registered new room: " + key + ", with ticket: " + ticket);
