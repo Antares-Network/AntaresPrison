@@ -6,7 +6,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.piotrwyrw.antares.prison.AntaresPrison;
-import org.piotrwyrw.antares.prison.Economy;
+import org.piotrwyrw.antares.prison.PrisonsUser;
+import org.piotrwyrw.antares.prison.PrisonsUsers;
 import org.piotrwyrw.antares.prison.constants.MessageConstants;
 import org.piotrwyrw.antares.prison.constants.PermissionConstants;
 import org.piotrwyrw.antares.prison.utils.MessageSender;
@@ -21,16 +22,15 @@ public class BalanceCommand implements CommandExecutor {
             return true;
         }
 
-        Economy economy = AntaresPrison.getInstance().economy;
-
+        PrisonsUsers users = AntaresPrison.getInstance().users;
+        PrisonsUser user = users.getUser((Player)sender);
         if (args.length == 1) {
             // Own balance
             if (!sender.hasPermission(PermissionConstants.BALANCE_OWN)) {
                 msd.toPlayer(MessageConstants.PERMISSION_DENIED, sender, true);
                 return true;
             }
-
-            double bal = economy.balanceOf((Player) sender);
+            double bal = user.getBalance();
 
             msd.toPlayer(MessageConstants.BALANCE(bal), sender, true);
             return true;
@@ -48,7 +48,7 @@ public class BalanceCommand implements CommandExecutor {
                 msd.toPlayer(MessageConstants.NO_SUCH_PLAYER(playername), sender, true);
                 return true;
             }
-            bal = economy.balanceOf(player);
+            bal = user.getBalance();
             msd.toPlayer(MessageConstants.BALANCE(bal, playername), sender, true);
             return true;
         } else {

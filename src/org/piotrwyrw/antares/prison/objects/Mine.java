@@ -6,7 +6,6 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.piotrwyrw.antares.prison.AntaresPrison;
 import org.piotrwyrw.antares.prison.constants.MessageConstants;
-import org.piotrwyrw.antares.prison.utils.MessageSender;
 
 import java.util.ArrayList;
 import java.util.Random;

@@ -4,6 +4,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.piotrwyrw.antares.prison.AntaresPrison;
+import org.piotrwyrw.antares.prison.PrisonsUser;
+import org.piotrwyrw.antares.prison.PrisonsUsers;
 import org.piotrwyrw.antares.prison.constants.MessageConstants;
 import org.piotrwyrw.antares.prison.constants.PermissionConstants;
 
@@ -44,11 +46,14 @@ public class MessageSender {
      * @param withPrefix
      */
     public void toEveryone(String message, String permission, boolean withPrefix) {
+        PrisonsUsers users = AntaresPrison.getInstance().users;
         for (Player p : Bukkit.getOnlinePlayers()) {
+            PrisonsUser user = users.getUser(p);
             if (p.getWorld() != AntaresPrison.getInstance().world)
                 continue;
             if (p.hasPermission(permission)) {
-                AntaresPrison.getInstance().temporary.setLastMessage(p, "", false, 0);
+                user.setLastMessage("", false);
+                users.updateUser(user);
                 p.sendMessage(MessageConstants.construct(message, withPrefix));
             }
         }
@@ -72,10 +77,13 @@ public class MessageSender {
      * @param withPrefix
      */
     public void toEveryone(String message, boolean withPrefix) {
+        PrisonsUsers users = AntaresPrison.getInstance().users;
         for (Player p : Bukkit.getOnlinePlayers()) {
+            PrisonsUser user = users.getUser(p);
             if (p.getWorld() != AntaresPrison.getInstance().world)
                 continue;
-            AntaresPrison.getInstance().temporary.setLastMessage(p, "", false, 0);
+            user.setLastMessage("", false);
+            users.updateUser(user);
             p.sendMessage(MessageConstants.construct(message, withPrefix));
         }
     }
@@ -97,13 +105,17 @@ public class MessageSender {
      * @param player
      * @param withPrefix
      */
-
     public void toPlayer(String message, CommandSender player, boolean withPrefix) {
-        if (player instanceof Player)
-            if (AntaresPrison.getInstance().temporary.lastMessageOf((Player)player).equals(message))
+        PrisonsUsers users = AntaresPrison.getInstance().users;
+        if (player instanceof Player) {
+            PrisonsUser user = users.getUser((Player) player);
+            if (user.getLastMessage().equalsIgnoreCase(message))
                 return;
-            else
-                AntaresPrison.getInstance().temporary.setLastMessage(((Player)(player)), message, true, 20 * 60);
+            else {
+                user.setLastMessage(message, true);
+                users.updateUser(user);
+            }
+        }
         player.sendMessage(MessageConstants.construct(message, withPrefix));
     }
 

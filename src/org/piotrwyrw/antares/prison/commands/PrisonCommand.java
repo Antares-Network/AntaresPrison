@@ -32,6 +32,8 @@ public class PrisonCommand implements CommandExecutor {
                     return new MineListCommand().onCommand(sender, cmd, label, args);
                 } else if (args[0].equalsIgnoreCase("reload")) {
                     return new ReloadCommand().onCommand(sender, cmd, label, args);
+                } else if (args[0].equalsIgnoreCase("migrate")) {
+                    return new MigrateCommand().onCommand(sender, cmd, label, args);
                 } else if (args[0].equalsIgnoreCase("getseller")) {
                     return new GetSellChestCommand().onCommand(sender, cmd, label, args);
                 } else {

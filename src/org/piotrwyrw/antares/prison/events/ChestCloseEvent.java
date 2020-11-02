@@ -10,7 +10,8 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
 import org.piotrwyrw.antares.prison.AntaresPrison;
-import org.piotrwyrw.antares.prison.Economy;
+import org.piotrwyrw.antares.prison.PrisonsUser;
+import org.piotrwyrw.antares.prison.PrisonsUsers;
 import org.piotrwyrw.antares.prison.WorthManager;
 import org.piotrwyrw.antares.prison.constants.MessageConstants;
 
@@ -25,8 +26,9 @@ public class ChestCloseEvent implements Listener {
         if (!evt.getView().getTitle().equals(MessageConstants.NAME_SELL_CHEST))
             return;
 
+        PrisonsUsers users = AntaresPrison.getInstance().users;
+
         Player p = (Player) evt.getPlayer();
-        Economy economy = AntaresPrison.getInstance().economy;
         double total = 0.0d;
         double own = 0.0d;
 
@@ -44,7 +46,9 @@ public class ChestCloseEvent implements Listener {
             total += (worthManager.worthOf(stack.getType()) * stack.getAmount());
             own += (worthManager.worthOf(stack.getType()) * stack.getAmount());
         }
-        economy.balance.replace(evt.getPlayer().getUniqueId(), total + economy.balanceOf((Player)evt.getPlayer()));
+        PrisonsUser user = users.getUser(evt.getPlayer().getUniqueId());
+        user.setBalance(user.getBalance() + total);
+        users.updateUser(user);
         if (own > 0.0d) {
             p.sendTitle("§c§lSOLD!", "§7" + total);
             p.spawnParticle(Particle.EXPLOSION_LARGE, p.getLocation(), 5);

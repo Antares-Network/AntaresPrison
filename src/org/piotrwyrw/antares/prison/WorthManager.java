@@ -4,7 +4,6 @@ import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.piotrwyrw.antares.prison.constants.MessageConstants;
-import org.piotrwyrw.antares.prison.utils.MessageSender;
 
 import java.io.File;
 import java.io.IOException;

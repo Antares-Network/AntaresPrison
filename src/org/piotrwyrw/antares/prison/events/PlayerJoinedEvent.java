@@ -4,21 +4,18 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.piotrwyrw.antares.prison.AntaresPrison;
-import org.piotrwyrw.antares.prison.Economy;
+import org.piotrwyrw.antares.prison.PrisonsUser;
+import org.piotrwyrw.antares.prison.PrisonsUsers;
+import org.piotrwyrw.antares.prison.utils.ListUtil;
 
 public class PlayerJoinedEvent implements Listener {
 
     @EventHandler
     public void onEvent(PlayerJoinEvent evt) {
-        Economy economy = AntaresPrison.getInstance().economy;
-
-        AntaresPrison.getInstance().tickets.addEveryone(AntaresPrison.getInstance().config.basic_ticket);
-
-        if (!economy.exists(evt.getPlayer())) {
-            economy.addBalance(evt.getPlayer(), 0.0d);
-            economy.saveToFile();
-        }
-
+        PrisonsUsers users = AntaresPrison.getInstance().users;
+        if (users.getUser(evt.getPlayer().getUniqueId()) != null)
+            return;
+        users.addUser(new PrisonsUser(evt.getPlayer().getUniqueId(), ListUtil.empty(), 0.0d));
     }
 
 }

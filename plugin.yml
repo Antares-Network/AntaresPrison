@@ -1,9 +1,9 @@
 name: AntaresPrison
-version: 1.4
+version: 1.5
 api-version: 1.15
 depend: [PlaceholderAPI, Multiverse-Core]
 authors: [piotrwyrw, nathen418]
-description: Special thanks to the whole Antares community for helping to test and improve this plugin.
+description: Thanks to the whole Antares community for helping to develop this plugin!
 load: POSTWORLD
 main: org.piotrwyrw.antares.prison.AntaresPrison
 commands:

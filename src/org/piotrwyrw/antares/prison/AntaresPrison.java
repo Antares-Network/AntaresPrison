@@ -2,28 +2,27 @@ package org.piotrwyrw.antares.prison;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
+import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
 import org.piotrwyrw.antares.prison.commands.PrisonCommand;
 import org.piotrwyrw.antares.prison.constants.MessageConstants;
 import org.piotrwyrw.antares.prison.events.*;
 import org.piotrwyrw.antares.prison.objects.MineAutoRegen;
+import org.piotrwyrw.antares.prison.utils.ListUtil;
 import org.piotrwyrw.antares.prison.utils.MessageSender;
 
 public class AntaresPrison extends JavaPlugin {
 
     static AntaresPrison antaresPrison;
     public Mines mines;
-    public Economy economy;
     public WorthManager worthManager;
     public World world;
     public MineAutoRegen autoRegen;
     public Rooms rooms;
-    public Tickets tickets;
     public Configuration config;
-    public Temporary temporary;
     public MessageSender msd;
+    public PrisonsUsers users;
 
     private boolean checkPlaceholderAPI() {
         if (!getServer().getPluginManager().getPlugin("PlaceholderAPI").isEnabled()) {
@@ -63,14 +62,14 @@ public class AntaresPrison extends JavaPlugin {
 
         MessageConstants.updatePluginSummary();
 
+
+        users = new PrisonsUsers("users.yml");
+        users.loadFromFile();
         mines = new Mines("mines.yml");
-        economy = new Economy("economy.yml");
         worthManager = new WorthManager("worth.yml");
         rooms = new Rooms("rooms.yml");
-        tickets = new Tickets("tickets.yml");
         autoRegen = new MineAutoRegen();
         config = new Configuration("config.yml");
-        temporary = new Temporary();
 
         if (!config.loadFromFile())
             return;
@@ -78,10 +77,8 @@ public class AntaresPrison extends JavaPlugin {
         this.world = config.world;
 
         mines.loadFromFile();
-        economy.loadFromFile();
         worthManager.loadFromFile();
         rooms.loadFromFile();
-        tickets.loadFromFile();
 
         mines.regenAllMines();
 
@@ -92,6 +89,12 @@ public class AntaresPrison extends JavaPlugin {
 
         registerCommands();
         registerEvents();
+
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            if (users.getUser(p) != null)
+                continue;
+            users.addUser(new PrisonsUser(p.getUniqueId(), ListUtil.empty(), 0.0d));
+        }
 
     }
 
@@ -124,17 +127,14 @@ public class AntaresPrison extends JavaPlugin {
     public void onDisable() {
         HandlerList.unregisterAll(this);
         msd.toAllAdmins(MessageConstants.PLUGIN_DISABLE, true);
+        users.saveToFile();
         Bukkit.getScheduler().cancelTasks(this);
-        economy.saveToFile();
-        tickets.saveToFile();
+        users = null;
         mines = null;
         worthManager = null;
-        economy = null;
         rooms = null;
         autoRegen = null;
         world = null;
-        tickets = null;
-        temporary = null;
         config = null;
         msd = null;
     }

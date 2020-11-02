@@ -9,6 +9,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.piotrwyrw.antares.prison.AntaresPrison;
+import org.piotrwyrw.antares.prison.PrisonsUser;
+import org.piotrwyrw.antares.prison.PrisonsUsers;
 import org.piotrwyrw.antares.prison.WorthManager;
 import org.piotrwyrw.antares.prison.constants.MessageConstants;
 import org.piotrwyrw.antares.prison.constants.PermissionConstants;
@@ -17,21 +19,6 @@ import org.piotrwyrw.antares.prison.utils.MessageSender;
 import java.util.Random;
 
 public class BlockMineEvent implements Listener {
-
-//    private int freeSpace(Inventory inventory) {
-//        int space = 0;
-//        for (ItemStack i : inventory.getContents()) {
-//            if (i == null) {
-//                space ++;
-//            } else {
-//                if (i.getType() == Material.AIR)
-//                    space ++;
-//                else
-//                    continue;
-//            }
-//        }
-//        return space - 5;
-//    }
 
     @EventHandler
     public void onEvent(BlockBreakEvent evt) {
@@ -53,25 +40,22 @@ public class BlockMineEvent implements Listener {
         evt.setDropItems(false);
 
         if (!evt.getPlayer().hasPermission(PermissionConstants.AUTOSELL)) {
-            //if (freeSpace(evt.getPlayer().getInventory()) > 0) {
                 evt.getPlayer().getInventory().addItem(new ItemStack(evt.getBlock().getType(), 1));
                 return;
-            //} else {
-             //   evt.getPlayer().sendTitle("§c§lYOUR INVENTORY", "§7is full");
-             //   evt.setCancelled(true);
-             //   return;
-            //}
         }
 
         // AutoSell
         if (evt.getPlayer().hasPermission(PermissionConstants.AUTOSELL)) {
+            PrisonsUsers users = AntaresPrison.getInstance().users;
+            PrisonsUser user = users.getUser(evt.getPlayer().getUniqueId());
             WorthManager worthManager = AntaresPrison.getInstance().worthManager;
             if (!worthManager.hasWorth(evt.getBlock().getType()))
                 return;
             Material m = evt.getBlock().getType();
             double worth = worthManager.worthOf(m);
-            double bal = AntaresPrison.getInstance().economy.balanceOf(evt.getPlayer()) + worth;
-            AntaresPrison.getInstance().economy.balance.replace(evt.getPlayer().getUniqueId(), bal);
+            double bal = user.getBalance() + worth;
+            user.setBalance(bal);
+            users.updateUser(user);
             evt.getPlayer().sendTitle("", "§b$" + worth);
         }
 

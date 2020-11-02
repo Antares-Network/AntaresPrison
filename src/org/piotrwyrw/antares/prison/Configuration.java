@@ -1,6 +1,5 @@
 package org.piotrwyrw.antares.prison;
 
-import com.mojang.brigadier.Message;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -77,10 +76,6 @@ public class Configuration {
         MessageConstants.MINE_REGEN_ALL = safeLoad("messages.mine_regen_all", MessageConstants.MINE_REGEN_ALL);
         MessageConstants.PERMISSION_DENIED = safeLoad("messages.permission_denied", MessageConstants.PERMISSION_DENIED);
         MessageConstants.MUST_BE_PLAYER = safeLoad("messages.must_be_player", MessageConstants.MUST_BE_PLAYER);
-        MessageConstants.COULD_NOT_SAVE_ECONOMY = safeLoad("messages.could_not_save_economy", MessageConstants.COULD_NOT_SAVE_ECONOMY);
-        MessageConstants.COULD_NOT_SAVE_TICKETS = safeLoad("messages.could_not_save_tickets", MessageConstants.COULD_NOT_SAVE_TICKETS);
-        MessageConstants.ECONOMY_SAVED = safeLoad("messages.economy_saved", MessageConstants.ECONOMY_SAVED);
-        MessageConstants.TICKETS_SAVED = safeLoad("messages.tickets_saved", MessageConstants.TICKETS_SAVED);
         MessageConstants.RELOAD_COMPLETE = safeLoad("messages.reload_complete", MessageConstants.RELOAD_COMPLETE);
         MessageConstants.SELLER_RECEIVED = safeLoad("messages.seller_received", MessageConstants.SELLER_RECEIVED);
         MessageConstants.CANT_DO_THAT_HERE = safeLoad("messages.can_not_do_that_here", MessageConstants.CANT_DO_THAT_HERE);

@@ -6,6 +6,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.piotrwyrw.antares.prison.AntaresPrison;
+import org.piotrwyrw.antares.prison.PrisonsUser;
+import org.piotrwyrw.antares.prison.PrisonsUsers;
 import org.piotrwyrw.antares.prison.constants.MessageConstants;
 import org.piotrwyrw.antares.prison.utils.MessageSender;
 
@@ -29,6 +31,9 @@ public class SignInteractEvent implements Listener {
         if (!s.getLine(0).equals(MessageConstants.SIGN_FIRST_LINE))
             return;
 
+        PrisonsUsers users = AntaresPrison.getInstance().users;
+        PrisonsUser user = users.getUser(evt.getPlayer());
+
         String ticket = s.getLine(1);
         double  price;
         try {
@@ -37,19 +42,19 @@ public class SignInteractEvent implements Listener {
             nfe.printStackTrace();
             return;
         }
-        if (AntaresPrison.getInstance().tickets.hasTicket(evt.getPlayer(), ticket)) {
+        if (user.hasTicket(ticket)) {
             msd.toPlayer(MessageConstants.ALREADY_HAS_TICKET, evt.getPlayer(), true);
             return;
         }
-        if (AntaresPrison.getInstance().economy.balanceOf(evt.getPlayer()) < price) {
+        if (user.getBalance() < price) {
             msd.toPlayer(MessageConstants.NOT_ENOUGH_MONEY, evt.getPlayer(), true);
             return;
         }
 
-        double bal = AntaresPrison.getInstance().economy.balanceOf(evt.getPlayer());
+        double bal = user.getBalance();
         bal -= price;
-        AntaresPrison.getInstance().tickets.addTicket(evt.getPlayer().getUniqueId(), ticket);
-        AntaresPrison.getInstance().economy.balance.replace(evt.getPlayer().getUniqueId(), bal);
+        user.addTicket(ticket);
+        users.updateUser(user);
         evt.getPlayer().sendTitle("§a§lBOUGHT", ticket);
     }
 

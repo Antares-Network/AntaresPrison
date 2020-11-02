@@ -3,8 +3,6 @@ package org.piotrwyrw.antares.prison.constants;
 import org.bukkit.ChatColor;
 import org.piotrwyrw.antares.prison.AntaresPrison;
 
-import java.lang.reflect.AnnotatedType;
-
 public class MessageConstants {
 
     public static String NAME_SELL_CHEST = "§6§lSell";
@@ -15,7 +13,7 @@ public class MessageConstants {
 
     public static String[] PLUGIN_SUMMARY = {
             "&6              AntaresPrison",
-            "&7  You are Running AntaresPrison &6{VERSION}",
+            "&7  You are Running AntaresPrison &6v{VERSION}",
             "&7       For help use &c/prisons help"
     };
 
@@ -32,6 +30,7 @@ public class MessageConstants {
 
     public static String[] HELP = {
             "&n&8o-------------------------------------------o",
+            "&b/prisons migrate &4&l[TEMPORARY | DEPRECATED]",
             "&b/prisons help &8-&e Show this help page",
             "&b/prisons regen &8-&e Regen all mines",
             "&b/prisons regen <m> &8-&e Regen a particular mine",
@@ -54,14 +53,6 @@ public class MessageConstants {
     public static String PERMISSION_DENIED = "&cPermission denied.";
 
     public static String MUST_BE_PLAYER = "&cYou must be a player to excecute this command.";
-
-    public static String COULD_NOT_SAVE_ECONOMY = "&cCould not save economy.";
-
-    public static String COULD_NOT_SAVE_TICKETS = "&cCould not save tickets.";
-
-    public static String ECONOMY_SAVED = "&7Economy was saved to a file.";
-
-    public static String TICKETS_SAVED = "&7Tickets were saved to a file";
 
     public static String RELOAD_COMPLETE = "&7Reload complete.";
 
@@ -102,6 +93,8 @@ public class MessageConstants {
     public static  String BALANCE(double bal, String who) {
         return "&7The balance of &b" + who + " &7is &b$" + bal;
     }
+
+    public static String COULD_NOT_SAVE(String what) { return "&7Could not save " + what; }
 
     public static  String construct(String message, boolean withPrefix) {
         return ChatColor.translateAlternateColorCodes('&', withPrefix ? PREFIX + message : message);

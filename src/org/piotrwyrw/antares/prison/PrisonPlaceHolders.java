@@ -23,11 +23,15 @@ public class PrisonPlaceHolders extends PlaceholderExpansion {
 
     @Override
     public String onPlaceholderRequest(Player p, String identifier) {
+        PrisonsUsers users = AntaresPrison.getInstance().users;
+        PrisonsUser user = users.getUser(p);
         if (identifier.equalsIgnoreCase("balance")) {
-            double bal = AntaresPrison.getInstance().economy.balanceOf(p);
+            double bal = user.getBalance();
             return "$" + bal;
+        } else if (identifier.equalsIgnoreCase("version")) {
+            return "v" + AntaresPrison.getInstance().getDescription().getVersion();
         } else if (identifier.equalsIgnoreCase("tier")) {
-            List<String> tickets = AntaresPrison.getInstance().tickets.tickets.get(p.getUniqueId());
+            List<String> tickets = user.getTickets();
             String tier = tickets.get(tickets.size() - 1).replace('_', ' ');
             return tier;
         } else {

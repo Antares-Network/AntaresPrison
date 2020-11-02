@@ -1,7 +1,5 @@
 package org.piotrwyrw.antares.prison.objects;
 
-import org.bukkit.Location;
-
 public class Room {
     public Area area;
     public String name;
