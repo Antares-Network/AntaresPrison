@@ -37,7 +37,7 @@ It has 4 gamemodes: Factions, Skyblock, Creative Plots, and Prisons
 * **prisons.place_sign** -- allows the player to place the rankup signs
 * **prisons.skip_room** -- allows the player to enter a room they have not bought the tier for yet
 
-
+# ________________________________________________
 # Tutorials
 ## Creating a rankup sign
 To create a rankup sign, you must use the format below.
@@ -58,7 +58,7 @@ To add a mine, you have to work with the `mines.yml` file.
 This file is generated when the plugin enables for the first time.
 [Material Cheatsheet](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html)
 
-##### Example file:
+##### Example file
 ```yml
 mines:
 
@@ -91,7 +91,7 @@ mines:
 To add a room, you have to work with the `rooms.yml` file.
 This file is generated when the plugin enables for the first time.
 
-##### Example file:
+##### Example file
 ```yml
 
 rooms:
@@ -125,7 +125,7 @@ This is the format, you have to use:
 ```yml
 MATERIAL_NAME: worth
 ```
-##### Example
+##### Example file
 ```yml
 OAK_LOG: 20.0
 DIAMOND_ORE: 100.5
@@ -137,6 +137,7 @@ The **economy.yml** and **tickets.yml** files do not need to be changed and are 
 
 ## v1.6 Update
 Both **economy.yml** and **tickets.yml** files had been replaced with a database **db_users.db**.
+# ________________________________________________
 
 # Placeholders
 * **%prisons_balance%** - This is the players balance. It is **NOT** tied to the Essentials economy in **ANY WAY**  
