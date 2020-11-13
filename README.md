@@ -119,8 +119,24 @@ rooms:
       
 ```
 
+## Changing the worth of blocks
+To change/set the worth of a block, you'll need the **worth.yml** file.
+This is the format, you have to use:
+```yml
+MATERIAL_NAME: worth
+```
+##### Example
+```yml
+OAK_LOG: 20.0
+DIAMOND_ORE: 100.5
+```
+
+
 # Other config files
-The **economy.yml, tickets.yml, and worth.yml** do not need to be configured and are managed automatically. If you want to change the worth of blocks in the mines change that in **worth.yml**
+The **economy.yml** and **tickets.yml** files do not need to be changed and are updated automatically.
+
+## v1.6 Update
+Both **economy.yml** and **tickets.yml** files had been replaced with a database **db_users.db**.
 
 # Placeholders
 * **%prisons_balance%** - This is the players balance. It is **NOT** tied to the Essentials economy in **ANY WAY**  
