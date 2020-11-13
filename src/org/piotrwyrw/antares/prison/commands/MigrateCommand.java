@@ -25,54 +25,11 @@ public class MigrateCommand implements CommandExecutor {
         if (!sender.hasPermission(PermissionConstants.RELOAD))
             return true;
         MessageSender msd = AntaresPrison.getInstance().msd;
-        msd.toPlayer("&7Attempting to migrate into users.yml ...", sender, true);
-        File eco = new File(AntaresPrison.getInstance().getDataFolder(), "economy.yml");
-        File tickets = new File(AntaresPrison.getInstance().getDataFolder(), "tickets.yml");
-        if (!eco.exists() || !tickets.exists()) {
-            msd.toPlayer("&7Failed to migrate.", sender, true);
-            return true;
-        }
-        FileConfiguration eco_conf = YamlConfiguration.loadConfiguration(eco);
-        FileConfiguration tickets_conf = YamlConfiguration.loadConfiguration(tickets);
-        ConfigurationSection eco_main = eco_conf.getConfigurationSection("economy");
-        ConfigurationSection tickets_main = tickets_conf.getConfigurationSection("tickets");
-        if (eco_main == null || tickets_main == null) {
-            msd.toPlayer("&7Failed to migrate: Wrong configuration sections.", sender, true);
-            return true;
-        }
-        try {
-            PrisonsUsers users = AntaresPrison.getInstance().users;
-            for (String key : eco_main.getKeys(false)) {
-                UUID uuid = UUID.fromString(key);
-                double bal = eco_conf.getDouble("economy." + key + ".money");
-                PrisonsUser user = users.getUser(UUID.fromString(key));
-                if (user == null) {
-                    PrisonsUser pu = new PrisonsUser(uuid, ListUtil.empty(), bal);
-                    users.addUser(pu);
-                    continue;
-                }
-                user.setBalance(bal);
-                users.updateUser(user);
-            }
-            for (String key : tickets_main.getKeys(false)) {
-                UUID uuid = UUID.fromString(key);
-                List<String> list_tickets = tickets_conf.getStringList("tickets." + key + ".tickets");
-                PrisonsUser user = users.getUser(UUID.fromString(key));
-                if (user == null) {
-                    PrisonsUser pu = new PrisonsUser(uuid, list_tickets, 0.0d);
-                    users.addUser(pu);
-                    continue;
-                }
-                user.setTickets(list_tickets);
-                users.updateUser(user);
-            }
-        } catch (NullPointerException npe) {
-            msd.toPlayer("&7Failed to migrate: NullPointerException (see console for more details).", sender, true);
-            npe.printStackTrace();
-        } catch (IllegalArgumentException iae) {
-            msd.toPlayer("&7Failed to migrate: IllegalArgumentException (see console for more details).", sender, true);
-            iae.printStackTrace();
-        }
+        msd.toPlayer("&7Attempting to migrate into database ...", sender, true);
+
+        AntaresPrison.getInstance().users.loadFromFile();
+        AntaresPrison.getInstance().users.saveToDataBase();
+
         msd.toPlayer("&7Migration successful.", sender, true);
         msd.toPlayer("&7Reloading ..", sender, true);
         AntaresPrison.getInstance().onDisable();
