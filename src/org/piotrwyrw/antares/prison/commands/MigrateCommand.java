@@ -11,8 +11,8 @@ import org.piotrwyrw.antares.prison.PrisonsUser;
 import org.piotrwyrw.antares.prison.PrisonsUsers;
 import org.piotrwyrw.antares.prison.constants.MessageConstants;
 import org.piotrwyrw.antares.prison.constants.PermissionConstants;
+import org.piotrwyrw.antares.prison.utils.ListUtil;
 import org.piotrwyrw.antares.prison.utils.MessageSender;
-import sun.security.krb5.Config;
 
 import java.io.File;
 import java.util.List;
@@ -46,6 +46,11 @@ public class MigrateCommand implements CommandExecutor {
                 UUID uuid = UUID.fromString(key);
                 double bal = eco_conf.getDouble("economy." + key + ".money");
                 PrisonsUser user = users.getUser(UUID.fromString(key));
+                if (user == null) {
+                    PrisonsUser pu = new PrisonsUser(uuid, ListUtil.empty(), bal);
+                    users.addUser(pu);
+                    continue;
+                }
                 user.setBalance(bal);
                 users.updateUser(user);
             }
@@ -53,6 +58,11 @@ public class MigrateCommand implements CommandExecutor {
                 UUID uuid = UUID.fromString(key);
                 List<String> list_tickets = tickets_conf.getStringList("tickets." + key + ".tickets");
                 PrisonsUser user = users.getUser(UUID.fromString(key));
+                if (user == null) {
+                    PrisonsUser pu = new PrisonsUser(uuid, list_tickets, 0.0d);
+                    users.addUser(pu);
+                    continue;
+                }
                 user.setTickets(list_tickets);
                 users.updateUser(user);
             }

@@ -6,10 +6,14 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.piotrwyrw.antares.prison.constants.MessageConstants;
+import org.piotrwyrw.antares.prison.utils.StringUtil;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -17,6 +21,10 @@ public class PrisonsUsers {
 
     private File file;
     private List<PrisonsUser> users;
+
+    public PrisonsUsers() {
+        this.users = new ArrayList<>();
+    }
 
     public PrisonsUsers(String filename) {
         this.file = new File(AntaresPrison.antaresPrison.getDataFolder(), filename);
@@ -58,9 +66,7 @@ public class PrisonsUsers {
         users.set(users.indexOf(user), user);
     }
 
-    /**
-     * Load users from file
-     */
+    @Deprecated
     public void loadFromFile() {;
         FileConfiguration configuration = YamlConfiguration.loadConfiguration(file);
         ConfigurationSection players = configuration.getConfigurationSection("players");
@@ -82,9 +88,36 @@ public class PrisonsUsers {
         }
     }
 
-    /**
-     * Save users to file
-     */
+    public void loadFromDataBase() {
+        DBTools tools = new DBTools("db_users.db");
+        if (!tools.tableExists("users")) {
+            saveToDataBase();
+            return;
+        }
+        ResultSet result = tools.result_query("SELECT * FROM users;");
+        users.clear();
+        while (true) {
+            try {
+                if (!result.next()) break;
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+            try {
+                String uuid = result.getString("uuid");
+                ArrayList<String> tickets = new ArrayList<String>();
+                tickets.addAll(Arrays.asList(result.getString("tickets")));
+                double bal = result.getDouble("balance");
+                System.out.println(uuid + " ::: ... :::" + bal);
+                users.add(new PrisonsUser(UUID.fromString(uuid), tickets, bal));
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+                continue;
+            }
+        }
+        tools.closeConnection();
+    }
+
+    @Deprecated
     public void saveToFile() {
         FileConfiguration configuration = YamlConfiguration.loadConfiguration(file);
         for (int i = 0; i < users.size(); i ++) {
@@ -103,6 +136,30 @@ public class PrisonsUsers {
             AntaresPrison.getInstance().msd.toAllAdmins(MessageConstants.COULD_NOT_SAVE("prisons users"), true);
             e.printStackTrace();
         }
+    }
+
+    public void saveToDataBase() {
+        DBTools tools = new DBTools("db_users.db");
+        if (!tools.tableExists("users")) {
+            // Create the users table if it doesn't exist yet.
+            tools.createTable("users", "uuid varchar(255), tickets varchar(255), balance double");
+        }
+        for (int i = 0; i < users.size(); i ++) {
+            PrisonsUser user = users.get(i);
+            String uuid = user.getUuid().toString();
+            String tickets = StringUtil.fromList((ArrayList<String>) user.getTickets());
+            double balance = user.getBalance();
+            if (!tools.ifQuery_where("users", "uuid = \"" + uuid + "\"")) {
+                tools.insertTable("users", "\"" + uuid + "\", \"" + tickets + "\", " + balance);
+                continue;
+            }
+            if (!tools.query("UPDATE users SET tickets = \"" + tickets + "\", " + "balance = " + balance + " WHERE uuid = \"" + uuid + "\";")) {
+                System.out.println("Could not update users on UUID [" + uuid + "]");
+                continue;
+            }
+            System.out.println("Error on UUID [" + uuid + "]");
+        }
+        tools.closeConnection();
     }
 
 }

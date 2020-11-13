@@ -63,8 +63,8 @@ public class AntaresPrison extends JavaPlugin {
         MessageConstants.updatePluginSummary();
 
 
-        users = new PrisonsUsers("users.yml");
-        users.loadFromFile();
+        users = new PrisonsUsers();
+        users.loadFromDataBase();
         mines = new Mines("mines.yml");
         worthManager = new WorthManager("worth.yml");
         rooms = new Rooms("rooms.yml");
@@ -90,12 +90,12 @@ public class AntaresPrison extends JavaPlugin {
         registerCommands();
         registerEvents();
 
+        // Add all online users [Do not delete!]
         for (Player p : Bukkit.getOnlinePlayers()) {
             if (users.getUser(p) != null)
                 continue;
             users.addUser(new PrisonsUser(p.getUniqueId(), ListUtil.empty(), 0.0d));
         }
-
     }
 
     private void registerEvents() {
@@ -127,7 +127,7 @@ public class AntaresPrison extends JavaPlugin {
     public void onDisable() {
         HandlerList.unregisterAll(this);
         msd.toAllAdmins(MessageConstants.PLUGIN_DISABLE, true);
-        users.saveToFile();
+        users.saveToDataBase();
         Bukkit.getScheduler().cancelTasks(this);
         users = null;
         mines = null;

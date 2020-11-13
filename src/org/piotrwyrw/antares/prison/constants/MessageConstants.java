@@ -96,6 +96,8 @@ public class MessageConstants {
 
     public static String COULD_NOT_SAVE(String what) { return "&7Could not save " + what; }
 
+    public static final String DB_CONNECTION_INVALID = "&7Database connection invalid.";
+
     public static  String construct(String message, boolean withPrefix) {
         return ChatColor.translateAlternateColorCodes('&', withPrefix ? PREFIX + message : message);
     }
