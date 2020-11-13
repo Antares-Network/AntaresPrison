@@ -121,6 +121,7 @@ rooms:
 
 ## Changing the worth of blocks
 To change/set the worth of a block, you'll need the **worth.yml** file.
+[Material Cheatsheet](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html)
 This is the format, you have to use:
 ```yml
 MATERIAL_NAME: worth
