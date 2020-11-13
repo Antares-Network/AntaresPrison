@@ -11,6 +11,11 @@ Join the Antares Network Discord server at https://discord.gg/KKYw763
 Our Minecraft server with the plugin installed: **mc.playantares.com**  
 It has 4 gamemodes: Factions, Skyblock, Creative Plots, and Prisons
 
+# !!! Migrate data !!!
+If you are updating from v1.4 to v1.5, make sure to use `/prisons migrate` as soon as possible.
+That command will move all data from the old files into the new users file.
+If you won't execute that command, you may loose player data.
+
 # List of commands
 * **/prisons help** -- Displays a list of the Plugin's commands
 * **/prisons regen** -- Regen all mines
