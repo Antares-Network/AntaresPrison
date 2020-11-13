@@ -11,6 +11,11 @@ Join the Antares Network Discord server at https://discord.gg/KKYw763
 Our Minecraft server with the plugin installed: **mc.playantares.com**  
 It has 4 gamemodes: Factions, Skyblock, Creative Plots, and Prisons
 
+# !!! Migrate data !!!
+If you are updating from v1.4 to v1.5 OR from v1.5 to v1.6, make sure to use `/prisons migrate` as soon as possible.
+That command will move all data from the old files into the new users file.
+If you won't execute that command, you may loose player data.
+
 # List of commands
 * **/prisons help** -- Displays a list of the Plugin's commands
 * **/prisons regen** -- Regen all mines
@@ -37,7 +42,7 @@ It has 4 gamemodes: Factions, Skyblock, Creative Plots, and Prisons
 * **prisons.place_sign** -- allows the player to place the rankup signs
 * **prisons.skip_room** -- allows the player to enter a room they have not bought the tier for yet
 
-
+# ________________________________________________
 # Tutorials
 ## Creating a rankup sign
 To create a rankup sign, you must use the format below.
@@ -58,7 +63,7 @@ To add a mine, you have to work with the `mines.yml` file.
 This file is generated when the plugin enables for the first time.
 [Material Cheatsheet](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html)
 
-##### Example file:
+##### Example file
 ```yml
 mines:
 
@@ -91,7 +96,7 @@ mines:
 To add a room, you have to work with the `rooms.yml` file.
 This file is generated when the plugin enables for the first time.
 
-##### Example file:
+##### Example file
 ```yml
 
 rooms:
@@ -119,8 +124,26 @@ rooms:
       
 ```
 
+## Changing the worth of blocks
+To change/set the worth of a block, you'll need the **worth.yml** file.
+[Material Cheatsheet](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html)
+This is the format, you have to use:
+```yml
+MATERIAL_NAME: worth
+```
+##### Example file
+```yml
+OAK_LOG: 20.0
+DIAMOND_ORE: 100.5
+```
+
+
 # Other config files
-The **economy.yml, tickets.yml, and worth.yml** do not need to be configured and are managed automatically. If you want to change the worth of blocks in the mines change that in **worth.yml**
+The **economy.yml** and **tickets.yml** files do not need to be changed and are updated automatically.
+
+## v1.6 Update
+Both **economy.yml** and **tickets.yml** files had been replaced with a database **db_users.db**.
+# ________________________________________________
 
 # Placeholders
 * **%prisons_balance%** - This is the players balance. It is **NOT** tied to the Essentials economy in **ANY WAY**  
