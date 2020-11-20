@@ -159,10 +159,7 @@ public class PrisonsUsers {
                 tools.insertTable("users", "\"" + uuid + "\", \"" + tickets + "\", " + balance);
                 continue;
             }
-            if (!tools.query("UPDATE users SET tickets = \"" + tickets + "\", " + "balance = " + balance + " WHERE uuid = \"" + uuid + "\";")) {
-                System.out.println("Could not update users on UUID [" + uuid + "]");
-                continue;
-            }
+            tools.query("UPDATE users SET tickets = \"" + tickets + "\", " + "balance = " + balance + " WHERE uuid = \"" + uuid + "\";");
             System.out.println("Error on UUID [" + uuid + "]");
         }
         tools.closeConnection();
