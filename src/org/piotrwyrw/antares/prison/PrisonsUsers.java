@@ -40,6 +40,10 @@ public class PrisonsUsers {
         }
     }
 
+    public void removeAll() {
+        users.clear();
+    }
+
     public void addUser(PrisonsUser user) {
         this.users.add(user);
     }
@@ -104,10 +108,12 @@ public class PrisonsUsers {
             }
             try {
                 String uuid = result.getString("uuid");
-                ArrayList<String> tickets = new ArrayList<String>();
-                tickets.addAll(Arrays.asList(result.getString("tickets")));
+                ArrayList<String> tickets = new ArrayList<>();
+                String[] rslt = StringUtil.fromString(result.getString("tickets"));
+                for (String s : rslt)
+                    tickets.add(s);
                 double bal = result.getDouble("balance");
-                System.out.println(uuid + " ::: ... :::" + bal);
+                System.out.println("Registered: UUID: " + uuid + ", BALANCE: " + bal + ", TICKETS (SIZE): " + tickets.size());
                 users.add(new PrisonsUser(UUID.fromString(uuid), tickets, bal));
             } catch (SQLException throwables) {
                 throwables.printStackTrace();

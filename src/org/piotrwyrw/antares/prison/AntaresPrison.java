@@ -128,6 +128,7 @@ public class AntaresPrison extends JavaPlugin {
         HandlerList.unregisterAll(this);
         msd.toAllAdmins(MessageConstants.PLUGIN_DISABLE, true);
         users.saveToDataBase();
+        users.removeAll();
         Bukkit.getScheduler().cancelTasks(this);
         users = null;
         mines = null;
