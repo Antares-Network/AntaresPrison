@@ -104,7 +104,7 @@ public class AntaresPrison extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ChestPlaceEvent(), this);
         getServer().getPluginManager().registerEvents(new ChestBreakEvent(), this);
         getServer().getPluginManager().registerEvents(new EntityDamageEvent(), this);
-        getServer().getPluginManager().registerEvents(new EntityExplosionDamageEvent(), this);
+        getServer().getPluginManager().registerEvents(new EntityAnyDamageEvent(), this);
         getServer().getPluginManager().registerEvents(new TNTExplodeEvent(), this);
         getServer().getPluginManager().registerEvents(new CreeperExplodeEvent(), this);
         getServer().getPluginManager().registerEvents(new InteractEvent(), this);
