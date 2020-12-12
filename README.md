@@ -11,15 +11,14 @@ Join the Antares Network Discord server at https://discord.gg/KKYw763
 Our Minecraft server with the plugin installed: **mc.playantares.com**  
 It has 4 gamemodes: Factions, Skyblock, Creative Plots, and Prisons
 
+# 12.12.2020
+From now on, you can find alpha builds in `out/artifacts` with features from the latest commits,
+but these builds are not guaranteed to be free of bugs and it is not recommended to use them.
+
 # !!! Migrate data !!!
 If you are updating from v1.4 to v1.5 OR from v1.5 to v1.6, make sure to use `/prisons migrate` as soon as possible.
 That command will move all data from the old files into the new users file.
 If you won't execute that command, you may loose player data.
-
-
-# 12.12.2020
-From now on, you can find alpha builds in `out/artifacts` with features from the latest commits,
-but these builds are not guaranteed to be free of bugs and it is not recommended to use them.
 
 # List of commands
 * **/prisons help** -- Displays a list of the Plugin's commands
