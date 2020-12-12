@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="AntaresPrison:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/AntaresPrison_jar</output-path>
+    <root id="archive" name="AntaresPrison.jar">
+      <element id="module-output" name="AntaresPrison" />
+      <element id="extracted-dir" path="$USER_HOME$/API/PlaceholderAPI-2.10.9.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/API/spigot-1.16.4.jar" path-in-jar="/" />
+      <element id="file-copy" path="$PROJECT_DIR$/plugin.yml" />
+      <element id="file-copy" path="$PROJECT_DIR$/config.yml" />
+    </root>
+  </artifact>
+</component>

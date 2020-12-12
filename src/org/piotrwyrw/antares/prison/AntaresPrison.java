@@ -62,7 +62,6 @@ public class AntaresPrison extends JavaPlugin {
 
         MessageConstants.updatePluginSummary();
 
-
         users = new PrisonsUsers("users.yml");
         users.loadFromDataBase();
         mines = new Mines("mines.yml");
