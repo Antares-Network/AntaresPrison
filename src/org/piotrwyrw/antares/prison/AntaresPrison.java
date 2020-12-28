@@ -9,6 +9,7 @@ import org.piotrwyrw.antares.prison.commands.PrisonCommand;
 import org.piotrwyrw.antares.prison.constants.MessageConstants;
 import org.piotrwyrw.antares.prison.events.*;
 import org.piotrwyrw.antares.prison.objects.MineAutoRegen;
+import org.piotrwyrw.antares.prison.objects.MysteryCrateGenerator;
 import org.piotrwyrw.antares.prison.utils.ListUtil;
 import org.piotrwyrw.antares.prison.utils.MessageSender;
 
@@ -23,6 +24,7 @@ public class AntaresPrison extends JavaPlugin {
     public Configuration config;
     public MessageSender msd;
     public PrisonsUsers users;
+    public MysteryCrateGenerator generator;
 
     private boolean checkPlaceholderAPI() {
         if (!getServer().getPluginManager().getPlugin("PlaceholderAPI").isEnabled()) {
@@ -69,6 +71,7 @@ public class AntaresPrison extends JavaPlugin {
         rooms = new Rooms("rooms.yml");
         autoRegen = new MineAutoRegen();
         config = new Configuration("config.yml");
+        generator = new MysteryCrateGenerator(config.mysteryCrateInterval, config.mysteryCrateY);
 
         if (!config.loadFromFile())
             return;

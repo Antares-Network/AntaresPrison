@@ -19,6 +19,9 @@ intelli-regen-time: 3
 # You probably want to keep this longer than intelligent regen
 force-regen-time: 20
 
+# The height (Y) at which the mystery crates will spawn in the world
+mystery-crate-y: 0
+
 # Messages | String...
 messages:
   plugin_enable: '&7Enabling plugin ..'

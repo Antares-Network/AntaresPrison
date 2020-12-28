@@ -16,6 +16,8 @@ public class Configuration {
     public World world;
     public int intelliRegenTime;
     public int forceRegenTime;
+    public int mysteryCrateY;
+    public int mysteryCrateInterval;
 
     public Configuration(String filename) {
         File f = new File(AntaresPrison.getInstance().getDataFolder(), filename);
@@ -45,8 +47,9 @@ public class Configuration {
     }
 
     private boolean unknownWorld() {
-        System.out.println("!!!!! AntaresPrison Plugin was disabled. Please put a proper world in config.yml !!!!!");
-        System.out.println("!!!!! Unknown world: " + world + " !!!!!");
+        System.out.println("AntaresPrison Plugin was disabled. Please put a proper world in config.yml");
+        System.out.println("Unknown world: " + world);
+        Bukkit.broadcastMessage(MessageConstants.PREFIX + "§cUnknown world dected in config.yml");
         AntaresPrison.getInstance().getServer().getPluginManager().disablePlugin(AntaresPrison.getInstance());
         return false;
     }
@@ -64,9 +67,15 @@ public class Configuration {
         try {
             this.intelliRegenTime = Integer.parseInt(safeLoad("intelli-regen-time", "3"));
             this.forceRegenTime = Integer.parseInt(safeLoad("force-regen-time", "20"));
+            this.mysteryCrateY = Integer.parseInt(safeLoad("mystery-crate-y", "0"));
+            this.mysteryCrateInterval = Integer.parseInt(safeLoad("mystery-crate-interval", "120"));
         } catch (NumberFormatException nfe) {
             this.intelliRegenTime = 3;
             this.forceRegenTime = 20;
+            this.mysteryCrateY = 0;
+            this.mysteryCrateInterval = 120;
+            System.out.println("An error has occured while reading from configuration file.");
+            nfe.printStackTrace();
         }
 
         MessageConstants.PREFIX = safeLoad("prefix", MessageConstants.PREFIX);
