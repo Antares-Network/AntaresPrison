@@ -53,6 +53,7 @@ public class SignInteractEvent implements Listener {
 
         double bal = user.getBalance();
         bal -= price;
+        user.setBalance(bal);
         user.addTicket(ticket);
         users.updateUser(user);
         evt.getPlayer().sendTitle("§a§lBOUGHT", ticket);

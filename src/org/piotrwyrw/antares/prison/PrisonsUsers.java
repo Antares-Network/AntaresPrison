@@ -160,7 +160,6 @@ public class PrisonsUsers {
                 continue;
             }
             tools.query("UPDATE users SET tickets = \"" + tickets + "\", " + "balance = " + balance + " WHERE uuid = \"" + uuid + "\";");
-            System.out.println("Error on UUID [" + uuid + "]");
         }
         tools.closeConnection();
     }
