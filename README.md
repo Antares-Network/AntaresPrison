@@ -11,10 +11,9 @@ Join the Antares Network Discord server at https://discord.gg/KKYw763
 Our Minecraft server with the plugin installed: **mc.playantares.com**  
 It has 4 gamemodes: Factions, Skyblock, Creative Plots, and Prisons
 
-# 12.12.2020
-From now on, you can find alpha builds in `out/artifacts/AntaresPrison_jar/AntaresPrison.jar` with features from the latest commits, but these builds are not guaranteed to be free of bugs and it is not recommended to use them.
+You can find alpha builds in `out/artifacts/AntaresPrison_jar/AntaresPrison.jar` with features from the latest commits, but these builds are not guaranteed to be free of bugs and it is not recommended to use them.
 
-# !!! Migrate data !!!
+# Migrate data
 If you are updating from v1.4 to v1.5 OR from v1.5 to v1.6, make sure to use `/prisons migrate` as soon as possible.
 That command will move all data from the old files into the new users file.
 If you won't execute that command, you may loose player data.
@@ -45,7 +44,6 @@ If you won't execute that command, you may loose player data.
 * **prisons.place_sign** -- allows the player to place the rankup signs
 * **prisons.skip_room** -- allows the player to enter a room they have not bought the tier for yet
 
-# ___________________________________________
 # Tutorials
 ## Creating a rankup sign
 To create a rankup sign, you must use the format below.
@@ -146,7 +144,6 @@ The **economy.yml** and **tickets.yml** files do not need to be changed and are 
 
 ## v1.6 Update
 Both **economy.yml** and **tickets.yml** files had been replaced with a database **db_users.db**.
-# ___________________________________________
 
 # Placeholders
 * **%prisons_balance%** - This is the players balance. It is **NOT** tied to the Essentials economy in **ANY WAY**  
