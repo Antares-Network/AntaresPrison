@@ -1,0 +1,11 @@
+# Thanks to the Antares community for helping to develop this plugin!
+name: AntaresPrison
+version: 1.7
+api-version: 1.15
+depend: [PlaceholderAPI, Multiverse-Core]
+authors: [piotrwyrw, nathen418]
+database: true
+main: org.piotrwyrw.antares.prison.AntaresPrison
+commands:
+  prisons:
+    description: Plugin main command

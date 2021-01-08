@@ -6,7 +6,7 @@
 
     <groupId>org.piotrwyrw</groupId>
     <artifactId>AntaresPrison</artifactId>
-    <version>2.7</version>
+    <version>1.7</version>
 
     <repositories>
         <repository>
@@ -44,4 +44,15 @@
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
+    <build>
+        <resources>
+            <resource>
+                <directory>src</directory>
+                <includes>
+                    <include>plugin.yml</include>
+                    <include>config.yml</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
 </project>

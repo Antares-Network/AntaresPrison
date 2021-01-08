@@ -5,8 +5,8 @@
       <element id="module-output" name="AntaresPrison" />
       <element id="extracted-dir" path="$USER_HOME$/API/PlaceholderAPI-2.10.9.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/API/spigot-1.16.4.jar" path-in-jar="/" />
-      <element id="file-copy" path="$PROJECT_DIR$/plugin.yml" />
-      <element id="file-copy" path="$PROJECT_DIR$/config.yml" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/plugin.yml" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/config.yml" />
     </root>
   </artifact>
 </component>

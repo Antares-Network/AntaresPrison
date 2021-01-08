@@ -27,8 +27,8 @@
 /home/piotrwyrwas/Dokumenty/GitHub/AntaresPrison/src/main/java/org/piotrwyrw/antares/prison/commands/MineListCommand.java
 /home/piotrwyrwas/Dokumenty/GitHub/AntaresPrison/src/main/java/org/piotrwyrw/antares/prison/Rooms.java
 /home/piotrwyrwas/Dokumenty/GitHub/AntaresPrison/src/main/java/org/piotrwyrw/antares/prison/events/BlockPlacedEvent.java
-/home/piotrwyrwas/Dokumenty/GitHub/AntaresPrison/src/main/java/org/piotrwyrw/antares/prison/objects/Area.java
 /home/piotrwyrwas/Dokumenty/GitHub/AntaresPrison/src/main/java/org/piotrwyrw/antares/prison/Mines.java
+/home/piotrwyrwas/Dokumenty/GitHub/AntaresPrison/src/main/java/org/piotrwyrw/antares/prison/objects/Area.java
 /home/piotrwyrwas/Dokumenty/GitHub/AntaresPrison/src/main/java/org/piotrwyrw/antares/prison/events/PlayerJoinedEvent.java
 /home/piotrwyrwas/Dokumenty/GitHub/AntaresPrison/src/main/java/org/piotrwyrw/antares/prison/events/ChestPlaceEvent.java
 /home/piotrwyrwas/Dokumenty/GitHub/AntaresPrison/src/main/java/org/piotrwyrw/antares/prison/commands/RegenCommand.java
@@ -36,10 +36,10 @@
 /home/piotrwyrwas/Dokumenty/GitHub/AntaresPrison/src/main/java/org/piotrwyrw/antares/prison/Configuration.java
 /home/piotrwyrwas/Dokumenty/GitHub/AntaresPrison/src/main/java/org/piotrwyrw/antares/prison/PrisonPlaceHolders.java
 /home/piotrwyrwas/Dokumenty/GitHub/AntaresPrison/src/main/java/org/piotrwyrw/antares/prison/events/SignPlaceEvent.java
+/home/piotrwyrwas/Dokumenty/GitHub/AntaresPrison/src/main/java/org/piotrwyrw/antares/prison/PrisonsUser.java
+/home/piotrwyrwas/Dokumenty/GitHub/AntaresPrison/src/main/java/org/piotrwyrw/antares/prison/PrisonsUsers.java
 /home/piotrwyrwas/Dokumenty/GitHub/AntaresPrison/src/main/java/org/piotrwyrw/antares/prison/objects/Room.java
 /home/piotrwyrwas/Dokumenty/GitHub/AntaresPrison/src/main/java/org/piotrwyrw/antares/prison/commands/ReloadCommand.java
 /home/piotrwyrwas/Dokumenty/GitHub/AntaresPrison/src/main/java/org/piotrwyrw/antares/prison/constants/PermissionConstants.java
-/home/piotrwyrwas/Dokumenty/GitHub/AntaresPrison/src/main/java/org/piotrwyrw/antares/prison/PrisonsUser.java
-/home/piotrwyrwas/Dokumenty/GitHub/AntaresPrison/src/main/java/org/piotrwyrw/antares/prison/PrisonsUsers.java
 /home/piotrwyrwas/Dokumenty/GitHub/AntaresPrison/src/main/java/org/piotrwyrw/antares/prison/events/RoomEnterEvent.java
 /home/piotrwyrwas/Dokumenty/GitHub/AntaresPrison/src/main/java/org/piotrwyrw/antares/prison/constants/MessageConstants.java
