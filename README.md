@@ -14,7 +14,7 @@ It has 4 gamemodes: Factions, Skyblock, Creative Plots, and Prisons
 You can find alpha builds in `target` with features from the latest commits, but these builds are not guaranteed to be free of bugs and it is not recommended to use them.
 
 # Migrate data
-If you are updating from v1.4 to v1.5 OR from v1.5 to v1.6, make sure to use `/prisons migrate` as soon as possible.
+If you are updating the plugin, make sure to use `/prisons migrate` as soon as possible.
 That command will move all data from the old files into the new users file.
 If you won't execute that command, you may loose player data.
 
