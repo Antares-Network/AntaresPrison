@@ -2,7 +2,6 @@ package org.piotrwyrw.antares.prison.objects;
 
 import org.bukkit.Location;
 
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
