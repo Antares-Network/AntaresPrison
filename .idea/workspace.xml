@@ -9,7 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f9609a8-9ed1-4388-8929-755f3c6649d8" name="Default Changelist" comment="" />
+    <list default="true" id="5f9609a8-9ed1-4388-8929-755f3c6649d8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_spigotmc_spigot_api_1_16_4_R0_1_SNAPSHOT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_spigotmc_spigot_api_1_16_4_R0_1_SNAPSHOT.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/piotrwyrw/antares/prison/PrisonPlaceHolders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/piotrwyrw/antares/prison/PrisonPlaceHolders.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,7 +52,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f1a73572-d38a-4145-9f7b-87d39d8a23bb" name="Default Changelist" comment="" />
+      <changelist id="5f9609a8-9ed1-4388-8929-755f3c6649d8" name="Default Changelist" comment="" />
       <created>1607764615497</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -66,5 +70,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

@@ -32,7 +32,18 @@ public class PrisonPlaceHolders extends PlaceholderExpansion {
             return "v" + AntaresPrison.getInstance().getDescription().getVersion();
         } else if (identifier.equalsIgnoreCase("tier")) {
             List<String> tickets = user.getTickets();
-            String tier = tickets.get(tickets.size() - 1).replace('_', ' ');
+            String tier;
+            if (tickets.size() <= 0) {
+                if (AntaresPrison.getInstance().rooms.rooms.size() > 0) {
+                    tier = AntaresPrison.getInstance().rooms.rooms.get(0).requiredTicket;
+                    user.addTicket(AntaresPrison.getInstance().rooms.rooms.get(0).requiredTicket);
+                    users.updateUser(user);
+                } else {
+                    tier = "Unknown";
+                }
+            } else {
+                tier = tickets.get(tickets.size() - 1).replace('_', ' ');
+            }
             return tier;
         } else {
             return "Unknown placeholder";
