@@ -147,7 +147,7 @@ Both **economy.yml** and **tickets.yml** files had been replaced with a database
 
 # Placeholders
 * **%prisons_balance%** - This is the players balance. It is **NOT** tied to the Essentials economy in **ANY WAY**  
-* **%prisons_tier%** -  This shows the mine tier that the player has unlocked
+* **%prisons_tier%** -  This shows the highest mine tier that the player has unlocked
 
 # IMPORTANT DISCLAIMER
 
