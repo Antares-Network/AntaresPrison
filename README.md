@@ -1,9 +1,12 @@
 # AntaresPrison 
 [![Discord](https://discordapp.com/api/guilds/649703068799336454/widget.png)](https://discordapp.com/invite/KKYw763)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/piotrwyrw/AntaresPrison?style=social)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/Antares-Network/AntaresPrison?style=social)
+![](https://img.shields.io/github/repo-size/Antares-Network/AntaresPrison?color=Green&style=flat-square)
+![](https://img.shields.io/tokei/lines/github/Antares-Network/AntaresPrison?style=flat-square)
+![](https://img.shields.io/github/downloads/Antares-Network/AntaresPrison/total?style=flat-square)  
 
 
-A Prisons plugin for any Spigot or Spigot fork, created for the [Antares Network](https://playantares.com/) Minecraft server.
+A Prisons plugin for any Spigot or Spigot fork, created for the [Antares Network](https://discordapp.com/invite/KKYw763) Minecraft server.
 
 
 # Antares Network Server [![Antares](https://cdn.discordapp.com/icons/649703068799336454/1a7ef8f706cd60d62547d2c7dc08d6f0.png)](https://discordapp.com/invite/KKYw763)
@@ -152,3 +155,13 @@ Both **economy.yml** and **tickets.yml** files had been replaced with a database
 # IMPORTANT DISCLAIMER
 
 * This plugin does **not** generate the world for you and you **must generate your own prisons world**  and then assign the coordinates of all of the mines in the **mines.yml**. You also need to tell the plugin where the doors to each of your rooms are in the **rooms.yml** file.
+
+
+
+### Check out our other projects here:
+https://github.com/Antares-Network
+
+
+## License
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/3.0/88x31.png" /></a>
