@@ -2,7 +2,7 @@
 name: AntaresPrison
 version: 1.7
 api-version: 1.15
-depend: [PlaceholderAPI, Multiverse-Core]
+depend: [PlaceholderAPI]
 authors: [piotrwyrw, nathen418]
 database: true
 main: org.piotrwyrw.antares.prison.AntaresPrison

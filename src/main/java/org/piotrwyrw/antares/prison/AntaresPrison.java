@@ -35,14 +35,14 @@ public class AntaresPrison extends JavaPlugin {
         return true;
     }
 
-    private boolean checkMultiverseCore() {
-        if (!getServer().getPluginManager().getPlugin("Multiverse-Core").isEnabled()) {
-            System.out.println("!!!!! No Multiverse-Core found. !!!!!");
-            getServer().getPluginManager().disablePlugin(this);
-            return false;
-        }
-        return true;
-    }
+    // private boolean checkMultiverseCore() {
+    //     if (!getServer().getPluginManager().getPlugin("Multiverse-Core").isEnabled()) {
+    //         System.out.println("!!!!! No Multiverse-Core found. !!!!!");
+    //         getServer().getPluginManager().disablePlugin(this);
+    //         return false;
+    //     }
+    //     return true;
+    // }
 
     @Override
     public void onEnable() {
@@ -55,8 +55,8 @@ public class AntaresPrison extends JavaPlugin {
         if (!checkPlaceholderAPI())
             return;
 
-        if (!checkMultiverseCore())
-            return;
+        // if (!checkMultiverseCore())
+        //     return;
 
         if (!getDataFolder().exists()) {
             getDataFolder().mkdir();
