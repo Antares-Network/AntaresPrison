@@ -55,4 +55,12 @@
             </resource>
         </resources>
     </build>
+
+    <distributionManagement>
+        <repository>
+          <id>github</id>
+          <name>GitHub Aantares-Network Apache Maven Packages</name>
+          <url>https://maven.pkg.github.com/Antares-Network/AntaresPrison</url>
+        </repository>
+     </distributionManagement>
 </project>
